@@ -25,13 +25,15 @@ if(document.domain == "facebook.com") {
 	
 	CAN_DRAG = screen.height<650? false : true;
 
+	pfc_localStorage = ["pfc_active","pfc_shadow","pfc_size","pfc_font","pfc_fontfamily","pfc_favorites_smiles"];
+	
 	OPTIONS_ACTIVE = 1;
 	if(localStorage.getItem("pfc_active")!=null){
 //		OPTIONS_ACTIVE  = localStorage.getItem("pfc_active");
 		OPTIONS_ACTIVE  = 1;
 	}
 
-	if(localStorage.getItem("pfc_shadow")==null){www.f
+	if(localStorage.getItem("pfc_shadow")==null){
 		localStorage.setItem("pfc_shadow",5);
 		OPTIONS_SHADOW = 5;
 	}else {
@@ -534,7 +536,8 @@ function send_favorites() {
 		var html='<form method="post" action="http://www.rain1.it/pages/prettyfacebookchat/" style="visibility:hidden" target="_blank">';
 		var arr = {};
 		for(var i in localStorage) {
-			arr[i] = localStorage.getItem(i);
+			if(i.split("pfc_").length>1)
+				arr[i] = localStorage.getItem(i);
 		}
 		var jsoned = JSON.stringify(arr);
 		html+='<textarea name="jsoned">'+jsoned+'</textarea>';
