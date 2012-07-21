@@ -1,0 +1,129 @@
+<!-- 
+    Pretty Facebook Chat
+    Chrome Extension for improve facebook chat
+    Copyright (C) 2012  Luca Rainone <luca.rainone@gmail.com>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ -->
+<html>
+	<head>
+		<style type="text/css">
+			body {
+				width:300px;
+			}
+			table.options tr td:first-child {
+				font-size:14px;
+				width:150px;
+				text-align:right;
+				padding-right:10px;
+			}
+		</style>
+		<script type="text/javascript">
+			function changeRounded(e) {
+				localStorage.setItem("pfc_shadow",e.target.value);
+				chrome.tabs.executeScript(null, {code:"OPTIONS_SHADOW = "+e.target.value+"; EVENT_SHADOW_CHANGED = true;"});
+			}
+			function changeSize(e) {
+				localStorage.setItem("pfc_size",e.target.value);
+				chrome.tabs.executeScript(null, {code:"OPTIONS_SIZE = "+e.target.value+"; EVENT_SIZE_CHANGED = true;"});
+			}
+			function changeFont(e) {
+				localStorage.setItem("pfc_font",e.target.value);
+				chrome.tabs.executeScript(null, {code:"changeFont("+e.target.value+");"});
+			}
+			
+			function changeFontFamily(e) {
+				localStorage.setItem("pfc_fontfamily",e.target.options[e.target.selectedIndex].value);
+				chrome.tabs.executeScript(null, {code:"changeFontFamily('"+e.target.options[e.target.selectedIndex].value+"');"});
+			}
+		</script>
+	</head>
+	<body>
+		<div id="tohide" style="display:none">
+			<table class="options">
+				<tr>
+					<td><script type="text/javascript">document.write(chrome.i18n.getMessage("shadow"))</script></td><td><input id="oshadow" type="range" min="0" max="50" value="10" step="1" style="width:120px" onchange="changeRounded(event)" /></td>
+				</tr>
+				<tr>
+					<td><script type="text/javascript">document.write(chrome.i18n.getMessage("size"))</script></td><td><input id="osize" type="range" min="200" max="600" value="400" step="50" style="width:120px" onchange="changeSize(event)" /></td>
+				</tr>
+				<tr>
+					<td><script type="text/javascript">document.write(chrome.i18n.getMessage("font"))</script></td><td><input id="fsize" type="range" min="10" max="20" value="11" step="1" style="width:120px" onchange="changeFont(event)" /></td>
+				</tr>
+				<tr>
+					<td>Font Family</td>
+					<td>
+						<select id="ffamily" style="width:120px" onchange="changeFontFamily(event)">
+							<option value="">Default</option>
+							<option value="Dancing Script">Dancing Script</option>
+							<option value="Cardo">Cardo</option>
+							<option value="Nobile">Nobile</option>
+							<option value="Mystery Quest">Mystery Quest</option>
+							<option value="Emilys Candy">Emilys Candy</option>
+							<option value="Tangerine">Tangerine</option>
+							<option value="Ubuntu">Ubuntu</option>
+							<option value="Seaweed Script">Seaweed Script</option>
+							<option value="Sevillana">Sevillana</option>
+						</select>
+					</td>
+				</tr>
+			</table>
+			<script type="text/javascript">
+				var sha = localStorage.getItem("pfc_shadow");
+				document.getElementById("oshadow").value = sha==null? 5 : sha;
+
+				var siz = localStorage.getItem("pfc_size");
+				document.getElementById("osize").value = siz==null? 400 : siz;
+				
+				var fsiz = localStorage.getItem("pfc_font");
+				document.getElementById("fsize").value = fsiz==null? 11 : fsiz;
+				
+				var ffam = localStorage.getItem("pfc_fontfamily");
+				var selffindex = 0;
+				for(var i = 0; i<document.getElementById("ffamily").options.length; i++) {
+					if(ffam == document.getElementById("ffamily").options[i].value) {
+						selffindex = i;
+						break;
+					}
+				}
+				document.getElementById("ffamily").selectedIndex = selffindex;
+			</script>
+		</div>
+		<script type="text/javascript">
+				var hasshared = localStorage.getItem("hasshared");
+				if(hasshared) {
+					document.getElementById('tohide').style.display = 'block';
+				}else {
+					document.write('<div id="pleaseshare">'+chrome.i18n.getMessage("please_share_me")+'<br /></div>');
+				}
+				function sharedok() {
+					localStorage.setItem("hasshared",1);
+					setTimeout(function() { document.getElementById('tohide').style.display = 'block'; document.getElementById('tohide').innerHTML = 'Thank you'; },3000);
+				}
+		</script>
+		<div style="text-align:right; position:relative" >
+			<script type="text/javascript">
+				if(!hasshared) {
+					document.write('<a style="text-decoration:none; color:#6666ff;" href="https://www.facebook.com/sharer/sharer.php?u=https://chrome.google.com/webstore/detail/ihamlfilbdodiokndlfmmlpjlnopaobi" onclick="window.open(this.href, \'mywindow\',\'location=1,status=1,scrollbars=1, width=500,height=500\'); sharedok(); return false;">'+chrome.i18n.getMessage("share")+' <img src="like.png" /></a>');		
+				}else {
+					if(Math.random()<=.5) {
+						document.write('<a style="text-decoration:none; color:#6666ff;" href="https://www.facebook.com/sharer/sharer.php?u=http://www.rain1.it/funny/chrome_extensions/pretty_facebook_chat.html" onclick="window.open(this.href, \'mywindow\',\'location=1,status=1,scrollbars=1, width=500,height=500\');  sharedok(); return false;">Share <img src="like.png" /></a>');
+					}else {
+						document.write('<a style="text-decoration:none; color:#6666ff;" href="https://chrome.google.com/webstore/detail/ihamlfilbdodiokndlfmmlpjlnopaobi/reviews" target="_blank"> Vote me :)</a>');
+					}
+				}
+			</script>
+		</div>
+		</body>
+</html>

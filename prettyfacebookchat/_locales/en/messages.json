@@ -1,0 +1,49 @@
+{
+  "appName": {
+    "message": "Pretty Facebook Chat",
+    "description": "The title of the application, displayed in the web store."
+  },
+  "appDesc": {
+    "message": "Prettify your Facebook chat. Bigger size, more animation, more... nice :-)", 
+    "description":"The description of the application, displayed in the web store."
+  },
+  "cool" : {
+	"message": "cool"  
+	},
+   "please_share_me" :{
+		"message":"Please, share this extension at least one time for unlock advanced settings! Thank you! :)"
+	},
+	"share" :{
+		"message":"Yes. I want unlock Advanced Settings"
+	},
+	"bfan" :{
+		"message":"Become a Fan"
+	},
+	"click_for_install" :{
+		"message":"Click here to get Pretty Facebook Chat---&gt; https://chrome.google.com/webstore/detail/ihamlfilbdodiokndlfmmlpjlnopaobi"
+	},
+	"suggestme" :{
+		"message":"Recommend me"
+	},
+	"shadow":{
+		"message":"External shadow"
+	},
+	"size":{
+		"message":"Window size"
+	},
+	"font":{
+		"message":"Text size"
+	},
+	"confirm_delete_img":{
+		"message":"Are you sure to want to delete this icon from favorites?"
+	},
+	"confirm_insert_emote":{
+		"message":"Do you want to insert this emote in your favorites?"
+	},
+	"send_stats_advise": {
+		"message":"You can send me your Pretty Facebook Chat configuration. That's only for developing purpose (so I can see major configurations). Do you want help me? :)"
+	},
+	"send_stats": {
+		"message":"stats"
+	}
+}

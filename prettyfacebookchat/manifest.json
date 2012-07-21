@@ -1,0 +1,24 @@
+{
+  "name": "__MSG_appName__",
+  "description": "__MSG_appDesc__",
+  "default_locale": "en",
+  "manifest_version": 1,
+  "permissions": [
+    "tabs", "http://www.facebook.com/*", "https://www.facebook.com/*"
+],
+  "version": "1.2.9.3",
+  "icons": { "128": "chat_128x128.png", "16":"chat_16x16.png" },
+  "content_scripts": [
+    {
+	"matches": ["http://www.facebook.com/*","https://www.facebook.com/*"],
+      "js": ["jquery-1.7.1.min.js", "jquery-ui-1.8.16.custom.min.js","jQuery.easing.js","md5.js","emoticons.js","flip.js"],
+	  "css": ["alter.css"]
+    }
+  ],
+  "background_page": "background.html",
+  "page_action": {
+    "default_title": "Prettify Facebook Chat",
+    "default_icon": "chat_16x16.png",
+	"default_popup": "popup.html" 
+  }
+}

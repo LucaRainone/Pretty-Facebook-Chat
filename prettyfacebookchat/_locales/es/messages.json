@@ -1,0 +1,47 @@
+{
+	"appName": {
+		"message": "Pretty Facebook Chat"
+	},
+	"appDesc": {
+		"message": "Mejore su chat en Facebook. Más grande, más animada, más ... genial :-)"
+	},
+	"cool" : {
+		"message": "Genial!!"  
+	},
+	"please_share_me" :{
+		"message":"Compartir esta extensión para desbloquear las opciones avanzadas. gracias:)"
+	},
+	"share" :{
+		"message":"Quiero más opciones"
+	},
+	"bfan" : {
+		"message": "Hazte fan"
+	},
+	"click_for_install" :{
+		"message":"Haga clic aquí para instalar Pretty Facebook Chat---&gt; https://chrome.google.com/webstore/detail/ihamlfilbdodiokndlfmmlpjlnopaobi"
+	},
+	"suggestme" :{
+		"message":"Comparte un enlace de esta extensión con tus amigos!"
+	},
+	"shadow":{
+		"message":"Sombra"
+	},
+	"size":{
+		"message":"Tamaño de la ventana"
+	},
+	"font":{
+		"message":"Tamaño de las letras"
+	},
+	"confirm_delete_img":{
+		"message":"¿Seguro que desea eliminar este icono de los favoritos?"
+	},
+	"confirm_insert_emote":{
+		"message":"¿Seguro que desea inserir este icono en los favoritos?"
+	},
+	"send_stats_advise": {
+		"message":"Usted me puede enviar a su configuración muy facebook chat. Eso es sólo para el desarrollo de propósito (para que pueda ver las configuraciones más importantes). ¿Quieres ayudarme? :)"
+	},
+	"send_stats": {
+		"message":"stats"
+	}
+}

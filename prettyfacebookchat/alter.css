@@ -1,0 +1,97 @@
+.fbDockChatTab .conversationContainer .fbChatMessage {
+	max-width:inherit !important;
+}
+div.messages .fbChatMessage a {
+	word-wrap: break-word !important;
+	white-space: pre-wrap;
+}
+div.messages {
+	
+}
+.fbDockChatTab {
+	width:100%;
+}
+.fbMercuryChatTab.user.active .titlebarTextWrapper,.titlebarTextWrapper {
+	max-width:250px;
+}
+.typingIndicator {
+	width:200px;
+}
+.fbNubFlyout.fbDockChatTabFlyout.fontbig10 .fbChatMessage {
+	font-size:10px;
+}
+.fbNubFlyout.fbDockChatTabFlyout.fontbig11 .fbChatMessage {
+	font-size:11px;
+}
+.fbNubFlyout.fbDockChatTabFlyout.fontbig12 .fbChatMessage {
+	font-size:12px;
+}
+.fbNubFlyout.fbDockChatTabFlyout.fontbig13 .fbChatMessage {
+	font-size:13px;
+}
+.fbNubFlyout.fbDockChatTabFlyout.fontbig14 .fbChatMessage {
+	font-size:14px;
+}
+.fbNubFlyout.fbDockChatTabFlyout.fontbig15 .fbChatMessage {
+	font-size:15px;
+}
+.fbNubFlyout.fbDockChatTabFlyout.fontbig16 .fbChatMessage{
+	font-size:16px;
+}
+.fbNubFlyout.fbDockChatTabFlyout.fontbig17 .fbChatMessage {
+	font-size:17px;
+}
+.fbNubFlyout.fbDockChatTabFlyout.fontbig18 .fbChatMessage {
+	font-size:18px;
+}
+.fbNubFlyout.fbDockChatTabFlyout.fontbig19 .fbChatMessage {
+	font-size:19px;
+}
+.fbNubFlyout.fbDockChatTabFlyout.fontbig20 .fbChatMessage {
+	font-size:20px;
+}
+div.pfc_buttons_head {
+	padding:3px; 
+	position:absolute; 
+	top:0px;
+	height:20px;
+}
+div.pfc_buttons_head button.pfc_linkfb {
+	color:#000;
+	float:left;
+	margin-right:5px;
+	cursor:pointer;
+}
+div.pfc_buttons_head button.pfc_linkfb:hover  {
+	text-decoration:none;
+	cursor:pointer;
+} 
+
+.pfc_dock {
+	cursor: pointer;
+	color: transparent !important;
+	text-decoration: none !important;
+	position: absolute;
+	top: 0px;
+	padding: 0px;
+	border: 1px solid #999;
+	background: -webkit-gradient(linear, center top, center bottom, from(#F5F6F6), to(#DFDEDF));
+	border-image: initial;
+	width:15px;
+	height:29px;
+}
+
+.pfc_dock i {
+	display:block;
+	height:29px;
+	background-repeat:no-repeat;
+}
+
+.asciicode {
+	cursor:pointer;
+}
+
+img.emote_custom  {
+	width:20px;
+	height:20px;
+}
