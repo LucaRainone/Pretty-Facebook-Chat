@@ -1,4 +1,4 @@
 Pretty-Facebook-Chat
 ====================
 
-Prettify your Facebook chat. Bigger size, more animation, more... nice :-)
+Chrome Extension for improve facebook chat
