@@ -16,110 +16,99 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+
+// included emoticons.js
 if(document.domain == "facebook.com") {
-	var pfc_emoticons = EMOTICONS.pfc_emoticons;
-	var extrasem      = EMOTICONS.extrasem;
-	var asciicode     = EMOTICONS.asciicode;
-	var asciipic      = EMOTICONS.asciipic;
-	var CHUCK         = EMOTICONS.CHUCK;
 	
 	CAN_DRAG = screen.height<650? false : true;
 
-	pfc_localStorage = ["pfc_active","pfc_shadow","pfc_size","pfc_font","pfc_fontfamily","pfc_favorites_smiles"];
 	
-	OPTIONS_ACTIVE = 1;
-	if(localStorage.getItem("pfc_active")!=null){
-//		OPTIONS_ACTIVE  = localStorage.getItem("pfc_active");
-		OPTIONS_ACTIVE  = 1;
-	}
-
-	if(localStorage.getItem("pfc_shadow")==null){
-		localStorage.setItem("pfc_shadow",5);
-		OPTIONS_SHADOW = 5;
-	}else {
-		OPTIONS_SHADOW = localStorage.getItem("pfc_shadow");
-	}
-	if(localStorage.getItem("pfc_size")==null){
-		localStorage.setItem("pfc_size",400);
-		OPTIONS_SIZE = 400;
-	}else {
-		OPTIONS_SIZE = localStorage.getItem("pfc_size");
+	EVENT_SHADOW_CHANGED = false;
+	EVENT_SIZE_CHANGED   = false;
+	
+	
+	// init config
+	var config = {
+		pfc_active           : 1,
+		pfc_shadow           : 5,
+		pfc_size             : 400,
+		pfc_font             : 11,
+		pfc_fontfamily       : "",
+		pfc_favorites_smiles : {}
 	}
 	
-	if(localStorage.getItem("pfc_font")==null){
-		localStorage.setItem("pfc_font",11);
-		OPTIONS_FONT = 11;
-	}else {
-		OPTIONS_FONT = localStorage.getItem("pfc_font");
+	// set stored configuration
+	for(var option in config) {
+		if(localStorage.getItem(option) != null) {
+			switch(option) {
+				case "pfc_favorites_smiles" :
+					config[option] = JSON.parse(localStorage.getItem(option));
+				break;
+				default :
+					config[option] = localStorage.getItem(option);
+			}
+		}
 	}
-	if(localStorage.getItem("pfc_fontfamily")==null){
-		localStorage.setItem("pfc_fontfamily","");
-		OPTIONS_FONT_FAMILY = "";
-	}else {
-		OPTIONS_FONT_FAMILY = localStorage.getItem("pfc_fontfamily");
-		if(OPTIONS_FONT_FAMILY)
-			$('head').append("<link href='https://fonts.googleapis.com/css?family="+OPTIONS_FONT_FAMILY+"' rel='stylesheet' type='text/css'>");
+	// temporary fix for move chucknorris on img
+	for(var i=0; i<config.pfc_favorites_smiles.length; i++) {
+		if(config.pfc_favorites_smiles[i].data == "[["+EMOTICONS.CHUCK+"]]") {
+			config.pfc_favorites_smiles[i].src = chrome.extension.getURL("emoticons/chucknorris.jpg");
+			break;
+		}
+	}
+	function setConfig(option,value) {
+		config[option].current = value;
+		localStorage.setItem(option,value);
 	}
 	function changeFont(f) {
-		OPTIONS_FONT = f;
-		localStorage.setItem("pfc_font",OPTIONS_FONT);
+		setConfig("pfc_font",f);
 		$('#fbDockChat .fbDockChatTabFlyout').each(function() {
-			var classes = $(this).attr("class");
-			classes= classes.replace(/fontbig[09]*/i,"").replace("  "," ");
-			$(this).attr("class",classes);
-			$('#fbDockChat .fbDockChatTabFlyout').addClass("fontbig"+f);
+			var $me     = $(this);
+			var classes = $me.attr("class");
+			classes = classes.replace(/fontbig[09]*/i,"").replace("  "," ");
+			$me.attr("class",classes);
+			$me.addClass("fontbig"+f);
 		});
 	}
 	function changeFontFamily(f) {
-		OPTIONS_FONT_FAMILY = f;
-		localStorage.setItem("pfc_fontfamily",OPTIONS_FONT_FAMILY);
+		setConfig("pfc_fontfamily",f);
 		$('head').append("<link href='https://fonts.googleapis.com/css?family="+f+"' rel='stylesheet' type='text/css'>");
 		$('#fbDockChat .fbDockChatTabFlyout').each(function() {
 			$(this).css("font-family",f);
 		});
 	}
-	if(localStorage.getItem("pfc_favorites_smiles")== null) {
-		var favorites_smiles = [];
-	}else {
-		try {
-			var favorites_smiles = JSON.parse(localStorage.getItem("pfc_favorites_smiles"));
-		}catch(e) {
-			var favorites_smiles = [];
+	
+	// add path to internal emoticon
+	for(var i in EMOTICONS.pfc_emoticons) {
+		if(EMOTICONS.pfc_emoticons[i].substr(0,4)!="http") {
+			EMOTICONS.pfc_emoticons[i] = chrome.extension.getURL("emoticons/"+EMOTICONS.pfc_emoticons[i]);
 		}
 	}
 	
-
-	EVENT_SHADOW_CHANGED = false;
-	EVENT_SIZE_CHANGED = false;
-
 	
-	for(var i in pfc_emoticons) {
-		if(pfc_emoticons[i].substr(0,4)!="http") {
-			pfc_emoticons[i] = chrome.extension.getURL("emoticons/"+pfc_emoticons[i]);
-		}
-	}
-	var cssURL = chrome.extension.getURL("ui-lightness/jquery-ui-1.8.16.custom.css");
-	$('head').append('<link rel="stylesheet" type="text/css" href="'+cssURL+'" />');
+// moved to manifest
+//	var cssURL = chrome.extension.getURL("ui-lightness/jquery-ui-1.8.16.custom.css");
+//	$('head').append('<link rel="stylesheet" type="text/css" href="'+cssURL+'" />');
 
 	// R.I.P Autoconfirm share.
 	
-	// easter egg
+	// easter egg :)
 	function chucky($s,$t) {
 		i=1;
 		$s.find('img').each(function() {
 			i++;
-			if($t[0] == $(this)[0]) {
-				$(this).attr("src",chrome.extension.getURL("chucknorris.jpg")).css('width','64px').css('height','64px');
+			var $img = $(this);
+			if($t[0] == $img[0]) {
+				$img.attr("src",chrome.extension.getURL("img/chucknorris.jpg")).css('width','64px').css('height','64px');
 				return ;
 			}
-			$(this).css('position','relative');
-			var $this = $(this);
+			$img.css('position','relative');
 			setTimeout(function() {
-			$this.animate({
-				'top':'+='+Math.random()*50* ((Math.random()<.5)? -1 : 1),
-				'left':'+='+Math.random()*50* ((Math.random()<.5)? -1 : 1),
-				'opacity':0
-			});
+				$img.animate({
+					'top':'+='+Math.random()*50* ((Math.random()<.5)? -1 : 1),
+					'left':'+='+Math.random()*50* ((Math.random()<.5)? -1 : 1),
+					'opacity':0
+				});
 			},10*i);
 		});
 	}
@@ -128,23 +117,24 @@ if(document.domain == "facebook.com") {
 	
 	function _controlWindows() {
 		// control if new windows are opened.
-		if(!OPTIONS_ACTIVE) {
+		if(!config.pfc_active) {
 			clearInterval(c_interval);
 			return ;
 		}
 		$("#fbDockChatTabs>div").each(function() {
-			if($(this).hasClass("opened")) {
-				$(this).css('-webkit-box-shadow', '');
-				$(this).removeClass("uiextshadow");
+			var $this = $(this);
+			if($this.hasClass("opened")) {
+				$this.css('-webkit-box-shadow', '');
+				$this.removeClass("uiextshadow");
 			}
-			if(!$(this).hasClass("uiextshadow") && !$(this).hasClass("opened")) {
-				$(this).css('-webkit-box-shadow', '0px 0px '+OPTIONS_SHADOW+'px #222')
-				$(this).addClass("uiextshadow");
+			if(!$this.hasClass("uiextshadow") && !$this.hasClass("opened")) {
+				$this.css('-webkit-box-shadow', '0px 0px '+config.pfc_shadow+'px #222')
+				$this.addClass("uiextshadow");
 			}
-			if($(this).hasClass("focusedTab")) {
-				$(this).css('z-index',99999);
+			if($this.hasClass("focusedTab")) {
+				$this.css('z-index',99999);
 			}else {
-				$(this).css('z-index',99998);
+				$this.css('z-index',99998);
 			}
 		});
 
@@ -169,41 +159,47 @@ if(document.domain == "facebook.com") {
 									e.stopPropagation();
 							},true);
 				$window.click(function(e) {
-					console.log($(e.target));
 					if($(e.target).hasClass('emote_custom')) {
 						var ecode = $(e.target).attr("title");
 						var found = false;
-						for(var i=0; i<favorites_smiles.length; i++) {
-							if(favorites_smiles[i].data == ecode) {
+						for(var i=0; i<config.pfc_favorites_smiles.length; i++) {
+							if(config.pfc_favorites_smiles[i].data == ecode) {
 								found = true;
 								break;
 							}
 						}
 						if(!found && confirm(chrome.i18n.getMessage('confirm_insert_emote'))) {
-							favorites_smiles.push({counter:100000000,src:$(e.target).attr("src"), data:ecode});
+							config.pfc_favorites_smiles.push({counter:100000000,src:$(e.target).attr("src"), data:ecode});
 							storeFavorites();
 						}
 					}
 				} );
 				if(CAN_DRAG) {
-					$window.draggable({handle:'.fbNubFlyoutTitlebar'}).css('-webkit-box-shadow', '0px 0px '+OPTIONS_SHADOW+'px #222').animate({
-						top:-OPTIONS_SIZE-50,
-						width:OPTIONS_SIZE,
-						'max-width':OPTIONS_SIZE,
-						height:OPTIONS_SIZE
-					}, {easing:'easeOutBack'});
+					$window
+						.draggable({handle:'.fbNubFlyoutTitlebar'})
+						.css('-webkit-box-shadow', '0px 0px '+config.pfc_shadow+'px #222')
+						.animate(
+							{
+								top         : -config.pfc_size-50,
+								width       : config.pfc_size,
+								'max-width' : config.pfc_size,
+								height      : config.pfc_size
+							}, 
+							{easing:'easeOutBack'}
+						);
 					$window.addClass('candrag');
 				}
 				$window.addClass('prettyfb');
 				
-				if(OPTIONS_FONT_FAMILY!="")
-					$window.css("font-family",OPTIONS_FONT_FAMILY);
-				$window.addClass("fontbig"+OPTIONS_FONT);
+				if(config.pfc_fontfamily!="")
+					$window.css("font-family",config.pfc_fontfamily);
+				
+				$window.addClass("fontbig"+config.pfc_font);
 				if(CAN_DRAG) {
-					$window.find(".fbNubFlyoutBody.scrollable").height(OPTIONS_SIZE-51);
-					$window.find(".conversation").width(OPTIONS_SIZE-20);
-					$window.find('.uiTextareaAutogrow.input').css('width',OPTIONS_SIZE-20);
-					$window.find(".fbDockChatTabFlyout .conversationContainer .fbChatMessage").css('max-width',-OPTIONS_SIZE-50);
+					$window.find(".fbNubFlyoutBody.scrollable").height(config.pfc_size-51);
+					$window.find(".conversation").width(config.pfc_size-20);
+					$window.find('.uiTextareaAutogrow.input').css('width',config.pfc_size-20);
+					$window.find(".fbDockChatTabFlyout .conversationContainer .fbChatMessage").css('max-width',-config.pfc_size-50);
 				}
 				$window.find(".mls.rfloat").prepend('<a href="#" class="button uiSelectorButton pfcopt"><img src="'+chrome.extension.getURL('emoticons/smile.png')+'" valign="middle" style="margin-top:5px; margin-right:5px"/></a>');
 				var suggest = false ;
@@ -249,75 +245,77 @@ if(document.domain == "facebook.com") {
 							imgs += '<a href="http://www.youtube.com/watch?v=ktYfJUnmey0" target="_blank" style="margin-right:10px;">Video tutorial</a>';
 							imgs += '<a href="#" class="buttonsendfav">'+chrome.i18n.getMessage("send_stats")+'</a>';
 							imgs += '</div>';
-
-							for(var i=0; i<favorites_smiles.length; i++) {
-								if(favorites_smiles[i] == undefined) favorites_smiles.splice(i,1);
+							imgs +='<div class="choose_emoticons">';
+							for(var i=0; i<config.pfc_favorites_smiles.length; i++) {
+								if(config.pfc_favorites_smiles[i] == undefined) config.pfc_favorites_smiles.splice(i,1);
 							}
 							imgs +='<div id="fav_icons" style="position:relative">';
-							for(var i=0; i<favorites_smiles.length; i++) {
-								if(favorites_smiles[i] == undefined) favorites_smiles.splice(i,1);
-								imgs += '<img src="'+favorites_smiles[i]['src']+'" width=16 height=16 style="margin:3px; cursor:pointer; position:relative" class="pfc_myfavemoticon"  data-title="'+favorites_smiles[i]['data']+'"/>';
+							for(var i=0; i<config.pfc_favorites_smiles.length; i++) {
+								if(config.pfc_favorites_smiles[i] == undefined) config.pfc_favorites_smiles.splice(i,1);
+								imgs += '<img src="'+config.pfc_favorites_smiles[i]['src']+'" width=16 height=16 style="margin:3px; cursor:pointer; position:relative" class="pfc_myfavemoticon"  data-title="'+config.pfc_favorites_smiles[i]['data']+'"/>';
 								
 							}
 							imgs +='</div>';
-							if(favorites_smiles.length>0) {
+							
+							if(config.pfc_favorites_smiles.length>0) {
 								imgs +="<hr />";
 							}
-							for(var i in pfc_emoticons) {
-								imgs += '<img src="'+pfc_emoticons[i]+'" width=16 height=16 style="margin:3px; cursor:pointer" data-title="'+i+'"/>';
+							for(var i in EMOTICONS.pfc_emoticons) {
+								imgs += '<img src="'+EMOTICONS.pfc_emoticons[i]+'" width=16 height=16 style="margin:3px; cursor:pointer" data-title="'+i+'"/>';
 							}
 
 							imgs +="<hr />";
-							for(var i in extrasem) {
-								imgs += '<img src="https://graph.facebook.com/'+extrasem[i]+'/picture" style="margin:3px; cursor:pointer; width:16px; height:16px" data-title="[['+extrasem[i]+']]"/>';
+							for(var i in EMOTICONS.extrasem) {
+								imgs += '<img src="https://graph.facebook.com/'+EMOTICONS.extrasem[i]+'/picture" style="margin:3px; cursor:pointer; width:16px; height:16px" data-title="[['+EMOTICONS.extrasem[i]+']]"/>';
 							}
 
 							imgs +="<hr />";
 
-							for(var i in asciicode) {
-								imgs += '<span class="asciicode" data-title="'+asciicode[i]+'">'+asciicode[i]+'</span> ';
+							for(var i in EMOTICONS.asciicode) {
+								imgs += '<span class="asciicode" data-title="'+EMOTICONS.asciicode[i]+'">'+EMOTICONS.asciicode[i]+'</span> ';
 							}
 
-							for(var i in asciipic) {
+							for(var i in EMOTICONS.asciipic) {
 								imgs += '<span class="asciicode" data-asciipic="'+i+'">Ascii '+i+'</span> | ';
 							}
 							imgs +="<hr />";
 							for(var i in codes) {
 								imgs += '<img src="https://graph.facebook.com/'+i+'/picture" width=16 height=16 style="margin:3px; cursor:pointer" data-title="[['+i+']]"/>';
 							}
-
-							imgs += '<div style="text-align:right"><span style="font-size:9px;"><a href="http://www.rain1.it/funny/chrome_extensions/pretty_facebook_chat.html" target="_blank">powered by rain1.it</a></span></div>';
+							imgs +='</div>';
+							imgs += '<div style="text-align:right"><span style="font-size:9px;"><a href="http://www.rain1.it/funny/chrome_extensions/pretty_facebook_chat.html?utm_source=powered" target="_blank">powered by rain1.it</a></span></div>';
 
 							
 
 							$suggest.append(imgs);
 							$suggest.find('img,.asciicode,button.headbutton').each(function() {
 								$(this).click(function(evt) {
-									if($(this).attr("data-title") == "[["+CHUCK+"]]") {
+									var $this = $(this);
+									if($this.attr("data-title") == "[["+EMOTICONS.CHUCK+"]]") {
 										if(Math.random()<=.5) {
-											chucky($suggest,$(this));
+											chucky($suggest,$this);
 											return ;
 										}
 									}
-									if($(this).attr("data-asciipic")) {
-										rtt.value += asciipic[$(this).attr("data-asciipic")];
+									if($this.attr("data-asciipic")) {
+										rtt.value += EMOTICONS.asciipic[$(this).attr("data-asciipic")];
 									}else {
-										if($(this).attr("src")) {
+										if($this.attr("src")) {
 											var _fsfound = false;
-											for(var i = 0; i<favorites_smiles.length; i++) {
-												if(favorites_smiles[i]['src'] == $(this).attr("src") ) {
-													favorites_smiles[i]['counter']++;
+											for(var i = 0; i<config.pfc_favorites_smiles.length; i++) {
+												if(config.pfc_favorites_smiles[i]['src'] == $this.attr("src") ) {
+													config.pfc_favorites_smiles[i]['counter']++;
 													_fsfound = true;
 													break;
 												}
 											}
 											if(!_fsfound) 
-												favorites_smiles.push({counter:0,src:$(this).attr("src"), data:$(this).attr("data-title")});
+												config.pfc_favorites_smiles.push({counter:0,src:$this.attr("src"), data:$this.attr("data-title")});
 										}
 										
 										storeFavorites();
 										
-										rtt.value += " " +$(this).attr("data-title");
+										rtt.value += " " +$this.attr("data-title");
 										
 										if(!evt.ctrlKey) {
 											$suggest.remove();
@@ -345,12 +343,12 @@ if(document.domain == "facebook.com") {
 
 									var cintmousedown = setTimeout(function() {
 										if(confirm(chrome.i18n.getMessage("confirm_delete_img"))) {
-											for(var i = 0; i<favorites_smiles.length; i++) {
-												if(favorites_smiles[i]['data'] == $meimg.attr("data-title")) {
-													favorites_smiles.splice(i,1);
+											for(var i = 0; i<config.pfc_favorites_smiles.length; i++) {
+												if(config.pfc_favorites_smiles[i]['data'] == $meimg.attr("data-title")) {
+													config.pfc_favorites_smiles.splice(i,1);
 												}
 											}
-											localStorage.setItem("pfc_favorites_smiles",JSON.stringify(favorites_smiles));
+											localStorage.setItem("pfc_favorites_smiles",JSON.stringify(config.pfc_favorites_smiles));
 											$meimg.animate({'opacity':0}, {complete:function() {  $meimg.remove(); } } );
 										}
 									},1000);
@@ -363,16 +361,16 @@ if(document.domain == "facebook.com") {
 							
 							
 							$suggest.css({
-								position:'absolute',
-								top:Math.round(+$window.position().top+10),
-								left:$window.position().left+$window.width()-360,
-								width:300,
-								height:200,
-								overflow:'auto',
-								'overflow-x':'hidden',
-								'z-index':99999,
-								'background-color':'#ffffff',
-								'-webkit-box-shadow':'0 0 10px #000000'
+								position             : 'absolute',
+								top                  : Math.round(+$window.position().top+10),
+								left                 : $window.position().left+$window.width()-360,
+								width                : 300,
+								height               : 200,
+								overflow             : 'auto',
+								'overflow-x'         : 'hidden',
+								'z-index'            : 99999,
+								'background-color'   : '#ffffff',
+								'-webkit-box-shadow' : '0 0 10px #000000'
 							});
 							var timeoutexit = 0;
 							$suggest.hover(function() {
@@ -408,30 +406,30 @@ if(document.domain == "facebook.com") {
 				
 			}
 			if(EVENT_SHADOW_CHANGED) {
-				$window.css('-webkit-box-shadow', '0px 0px '+OPTIONS_SHADOW+'px #222');
-
-				
-				localStorage.setItem("pfc_shadow",OPTIONS_SHADOW);
+				$window.css('-webkit-box-shadow', '0px 0px '+config.pfc_shadow+'px #222');
+				setConfig("pfc_shadow",config.pfc_shadow);
+				EVENT_SHADOW_CHANGED = false;
 			}
 			if(EVENT_SIZE_CHANGED && CAN_DRAG) {
 				var objcss = {
-						width:OPTIONS_SIZE,
-						'max-width':OPTIONS_SIZE
+						width:config.pfc_size,
+						'max-width':config.pfc_size
 					};
 
-				objcss['height'] = OPTIONS_SIZE;
-				objcss['top']    = -OPTIONS_SIZE-50;
+				objcss['height'] = config.pfc_size;
+				objcss['top']    = -config.pfc_size-50;
 			
 				$window.css(objcss);
-				$window.find(".conversation").width(OPTIONS_SIZE-20);
+				$window.find(".conversation").width(config.pfc_size-20);
 
-				$window.find(".fbNubFlyoutBody.scrollable").height(OPTIONS_SIZE-51);
+				$window.find(".fbNubFlyoutBody.scrollable").height(config.pfc_size-51);
 				$window.find(".fbChatMessage").css({
 					'max-width':'none',
-					width:OPTIONS_SIZE-50
+					width:config.pfc_size-50
 				});
 				
-				localStorage.setItem("pfc_size",OPTIONS_SIZE);
+				localStorage.setItem("pfc_size",config.pfc_size);
+				EVENT_SIZE_CHANGED = false;
 			}
 			//$('#pagelet_composer').html(OPTIONS_SHADOW+"px");
 		});
@@ -439,7 +437,7 @@ if(document.domain == "facebook.com") {
 		EVENT_SHADOW_CHANGED = false;
 	}
 	function _pfc_start() {
-		if(OPTIONS_ACTIVE==1) {
+		if(config.pfc_active) {
 			c_interval = setInterval(_controlWindows,300);
 		} else {
 			var _f = function() {
@@ -448,7 +446,7 @@ if(document.domain == "facebook.com") {
 					return ;
 				}
 				$(".fbDockWrapper .pfc_dock i").css({
-					'background-image':'url("'+chrome.extension.getURL('chat_16x16_off.png')+'")'
+					'background-image':'url("'+chrome.extension.getURL('img/chat_16x16_off.png')+'")'
 				});
 			
 			}
@@ -465,38 +463,39 @@ if(document.domain == "facebook.com") {
 			}else {
 				var title = title_off;
 			}
-			var $mypfc = $('<div class="fbNub"><a data-hover="tooltip" title="'+title+'" href="#" class="pfc_dock fbNubButton"><i style="background-image:url(\''+chrome.extension.getURL('chat_16x16.png')+'\')"</i></a></div>');
+			var $mypfc = $('<div class="fbNub"><a data-hover="tooltip" title="'+title+'" href="#" class="pfc_dock fbNubButton"><i style="background-image:url(\''+chrome.extension.getURL('img/chat_16x16.png')+'\')"</i></a></div>');
 			
 			if(CAN_DRAG) {
 				
 				$(this).find(".pfc_dock i").css({
-					'background-image':'url("'+chrome.extension.getURL('chat_16x16.png')+'")'
+					'background-image':'url("'+chrome.extension.getURL('img/chat_16x16.png')+'")'
 				});
 				$(this).find('.pfc_dock').attr("title",title_on);
 			}else {
 
 				$(this).find(".pfc_dock i").css({
-					'background-image':'url("'+chrome.extension.getURL('chat_16x16_off.png')+'")'
+					'background-image':'url("'+chrome.extension.getURL('img/chat_16x16_off.png')+'")'
 				});
 				$(this).find('.pfc_dock').attr("title",title_off);
 			}
 			
 			$mypfc.click(function() {
+				var $this = $(this);
 				CAN_DRAG = CAN_DRAG==true? false : true;
 				localStorage.setItem("pfc_active",CAN_DRAG);
 				if(CAN_DRAG) {
 					
-					$(this).find(".pfc_dock i").css({
-						'background-image':'url("'+chrome.extension.getURL('chat_16x16.png')+'")'
+					$this.find(".pfc_dock i").css({
+						'background-image':'url("'+chrome.extension.getURL('img/chat_16x16.png')+'")'
 					});
 					_pfc_start();
-					$(this).find('.pfc_dock').attr("title",title_on);
+					$this.find('.pfc_dock').attr("title",title_on);
 				}else {
 
-					$(this).find(".pfc_dock i").css({
-						'background-image':'url("'+chrome.extension.getURL('chat_16x16_off.png')+'")'
+					$this.find(".pfc_dock i").css({
+						'background-image':'url("'+chrome.extension.getURL('img/chat_16x16_off.png')+'")'
 					});
-					$(this).find('.pfc_dock').attr("title",title_off);
+					$this.find('.pfc_dock').attr("title",title_off);
 				}
 			});
 			$('.fbDockWrapper .fbDock:first').append($mypfc);
@@ -510,16 +509,15 @@ if(document.domain == "facebook.com") {
 }
 
 function storeFavorites() {
-	favorites_smiles.sort(function(a,b) {
+	config.pfc_favorites_smiles.sort(function(a,b) {
 		if(a.counter==b.counter) return 0;
 		return Math.floor(a.counter/10)<Math.floor(b.counter/10)? 1 : -1;
 	});
 	
-	while(favorites_smiles.length>=72) {
-		favorites_smiles.shift();
+	while(config.pfc_favorites_smiles.length>=72) {
+		config.pfc_favorites_smiles.shift();
 	}
-	
-	localStorage.setItem("pfc_favorites_smiles",JSON.stringify(favorites_smiles));
+	localStorage.setItem("pfc_favorites_smiles",JSON.stringify(config.pfc_favorites_smiles));
 }
 
 function send_favorites() {

@@ -18,33 +18,33 @@
 */
 EMOTICONS =  {};
 EMOTICONS.pfc_emoticons = {
-		':)':'smile.png',
-		'>:(':'ooooo.png',
-		'-_-':'boh.png',
-		':(':'nu.png',
-		':/':'mmmm.png',
-		'o.O':'oo.png',
-		':p':'pp.png',
-		':\'(':'sigh.png',
-		'>:O':'uffiiii.png',
-		':D':'DD.png',
-		'3:)':'devil.png',
-		':v':'pacman.png',
-		':o':'uao.png',
-		'O:)':'a.png',
-		':3':'3.png',
-		';)':'ammicc.png',
-		':*':'kiss.png',
-		':|]':'robot.png',
-		'8)':'88.png',
-		'<3':'cuore.png',
-		':putnam:':'human.png',
-		'8-|':'sole.png',
-		'^_^':'gnep.png',
-		':42:':'42.png',
-		'(^^^)':'https://s-static.ak.facebook.com/images/emote/shark.gif',
-		'(y)':'thumb.png',
-		'<(&quot)': 'https://s-static.ak.facebook.com/images/emote/penguin.gif'
+		':)'       : 'smile.png',
+		'>:('      : 'ooooo.png',
+		'-_-'      : 'boh.png',
+		':('       : 'nu.png',
+		':/'       : 'mmmm.png',
+		'o.O'      : 'oo.png',
+		':p'       : 'pp.png',
+		':\'('     : 'sigh.png',
+		'>:O'      : 'uffiiii.png',
+		':D'       : 'DD.png',
+		'3:)'      : 'devil.png',
+		':v'       : 'pacman.png',
+		':o'       : 'uao.png',
+		'O:)'      : 'a.png',
+		':3'       : '3.png',
+		';)'       : 'ammicc.png',
+		':*'       : 'kiss.png',
+		':|]'      : 'robot.png',
+		'8)'       : '88.png',
+		'<3'       : 'cuore.png',
+		':putnam:' : 'human.png',
+		'8-|'      : 'sole.png',
+		'^_^'      : 'gnep.png',
+		':42:'     : '42.png',
+		'(^^^)'    : 'https://s-static.ak.facebook.com/images/emote/shark.gif',
+		'(y)'      : 'thumb.png',
+		'<(&quot)' : 'https://s-static.ak.facebook.com/images/emote/penguin.gif'
 	}
 	
 	
@@ -142,7 +142,7 @@ EMOTICONS.asciicode = EMOTICONS.asciicode.split(" ");
 	
 	
 EMOTICONS.asciipic = {
-		'GUN':"....._\________________,,__\n"+
+	'GUN':"....._\________________,,__\n"+
 "..../ `--│││││││││------------_]\n"+
 ".../_==o _________________\n"+
 ".....),---.(_(__) /\n"+

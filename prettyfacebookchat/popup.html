@@ -32,11 +32,11 @@
 		<script type="text/javascript">
 			function changeRounded(e) {
 				localStorage.setItem("pfc_shadow",e.target.value);
-				chrome.tabs.executeScript(null, {code:"OPTIONS_SHADOW = "+e.target.value+"; EVENT_SHADOW_CHANGED = true;"});
+				chrome.tabs.executeScript(null, {code:"config.pfc_shadow = "+e.target.value+"; EVENT_SHADOW_CHANGED = true;"});
 			}
 			function changeSize(e) {
 				localStorage.setItem("pfc_size",e.target.value);
-				chrome.tabs.executeScript(null, {code:"OPTIONS_SIZE = "+e.target.value+"; EVENT_SIZE_CHANGED = true;"});
+				chrome.tabs.executeScript(null, {code:"config.pfc_size = "+e.target.value+"; EVENT_SIZE_CHANGED = true;"});
 			}
 			function changeFont(e) {
 				localStorage.setItem("pfc_font",e.target.value);
@@ -115,10 +115,10 @@
 		<div style="text-align:right; position:relative" >
 			<script type="text/javascript">
 				if(!hasshared) {
-					document.write('<a style="text-decoration:none; color:#6666ff;" href="https://www.facebook.com/sharer/sharer.php?u=https://chrome.google.com/webstore/detail/ihamlfilbdodiokndlfmmlpjlnopaobi" onclick="window.open(this.href, \'mywindow\',\'location=1,status=1,scrollbars=1, width=500,height=500\'); sharedok(); return false;">'+chrome.i18n.getMessage("share")+' <img src="like.png" /></a>');		
+					document.write('<a style="text-decoration:none; color:#6666ff;" href="https://www.facebook.com/sharer/sharer.php?u=https://chrome.google.com/webstore/detail/ihamlfilbdodiokndlfmmlpjlnopaobi" onclick="window.open(this.href, \'mywindow\',\'location=1,status=1,scrollbars=1, width=500,height=500\'); sharedok(); return false;">'+chrome.i18n.getMessage("share")+' <img src="img/like.png" /></a>');		
 				}else {
 					if(Math.random()<=.5) {
-						document.write('<a style="text-decoration:none; color:#6666ff;" href="https://www.facebook.com/sharer/sharer.php?u=http://www.rain1.it/funny/chrome_extensions/pretty_facebook_chat.html" onclick="window.open(this.href, \'mywindow\',\'location=1,status=1,scrollbars=1, width=500,height=500\');  sharedok(); return false;">Share <img src="like.png" /></a>');
+						document.write('<a style="text-decoration:none; color:#6666ff;" href="https://www.facebook.com/sharer/sharer.php?u=http://www.rain1.it/funny/chrome_extensions/pretty_facebook_chat.html?utm_source=pwindow50" onclick="window.open(this.href, \'mywindow\',\'location=1,status=1,scrollbars=1, width=500,height=500\');  sharedok(); return false;">Share <img src="img/like.png" /></a>');
 					}else {
 						document.write('<a style="text-decoration:none; color:#6666ff;" href="https://chrome.google.com/webstore/detail/ihamlfilbdodiokndlfmmlpjlnopaobi/reviews" target="_blank"> Vote me :)</a>');
 					}

@@ -95,3 +95,9 @@ img.emote_custom  {
 	width:20px;
 	height:20px;
 }
+.choose_emoticons img {
+
+}
+.choose_emoticons img:hover {
+	outline: solid 1px #999;
+}
