@@ -99,7 +99,7 @@ if(document.domain == "facebook.com") {
 			i++;
 			var $img = $(this);
 			if($t[0] == $img[0]) {
-				$img.attr("src",chrome.extension.getURL("img/chucknorris.jpg")).css('width','64px').css('height','64px');
+				$img.attr("src",chrome.extension.getURL("emoticons/chucknorris.jpg")).css('width','64px').css('height','64px');
 				return ;
 			}
 			$img.css('position','relative');
