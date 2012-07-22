@@ -11,10 +11,10 @@
 	"message": "cool"  
 	},
    "please_share_me" :{
-		"message":"Please, share this extension at least one time for unlock advanced settings! Thank you! :)"
+		"message":"Please share this extension at least once to unlock the advanced settings! Thank you! :)"
 	},
 	"share" :{
-		"message":"Yes. I want unlock Advanced Settings"
+		"message":"Yes. I want to unlock the Advanced Settings"
 	},
 	"bfan" :{
 		"message":"Become a Fan"
@@ -41,7 +41,7 @@
 		"message":"Do you want to insert this emote in your favorites?"
 	},
 	"send_stats_advise": {
-		"message":"You can send me your Pretty Facebook Chat configuration. That's only for developing purpose (so I can see major configurations). Do you want help me? :)"
+		"message":"You can send me your Pretty Facebook Chat configuration. That's only for developing purposes (so I can see the most used configurations). Do you want help me? :)"
 	},
 	"send_stats": {
 		"message":"stats"
