@@ -1,4 +1,4 @@
 Pretty-Facebook-Chat
 ====================
 
-Chrome Extension for improve facebook chat
+Chrome Extension that improves the facebook chat
