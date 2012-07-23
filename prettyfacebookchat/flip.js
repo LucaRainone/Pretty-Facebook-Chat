@@ -34,7 +34,7 @@ if(document.domain == "facebook.com") {
 		pfc_size             : 400,
 		pfc_font             : 11,
 		pfc_fontfamily       : "",
-		pfc_favorites_smiles : []
+		pfc_favorites_smiles : {}
 	}
 	
 	// set stored configuration
@@ -56,9 +56,8 @@ if(document.domain == "facebook.com") {
 			break;
 		}
 	}
-
 	// temporary fix for wrong commit
-	if(typeof config.pfc_favorites_smiles != 'array') {
+	if(typeof config.pfc_favorites_smiles.length == 'undefined') {
 		config.pfc_favorites_smiles = [];
 	}
 	
