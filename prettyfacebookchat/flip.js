@@ -193,6 +193,8 @@ if(document.domain == "facebook.com") {
 							{easing:'easeOutBack'}
 						);
 					$window.addClass('candrag');
+					moveEmoticonButton($window);
+					
 				}
 				$window.addClass('prettyfb');
 				
@@ -432,7 +434,7 @@ if(document.domain == "facebook.com") {
 					'max-width':'none',
 					width:config.pfc_size-50
 				});
-				
+				moveEmoticonButton($window);
 				localStorage.setItem("pfc_size",config.pfc_size);
 				EVENT_SIZE_CHANGED = false;
 			}
@@ -509,7 +511,9 @@ if(document.domain == "facebook.com") {
 			setTimeout(pfcAddIcon,1000);
 		}
 	}
-
+	function moveEmoticonButton($window) {
+		$window.find('.emoticonsPanel').css('left',config.pfc_size-25);
+	}
 	pfcAddIcon();
 }
 
