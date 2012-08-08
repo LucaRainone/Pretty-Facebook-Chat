@@ -2,7 +2,7 @@
   "name": "__MSG_appName__",
   "description": "__MSG_appDesc__",
   "default_locale": "en",
-  "manifest_version": 1,
+  "manifest_version": 2,
   "permissions": [
     "tabs", "http://www.facebook.com/*", "https://www.facebook.com/*"
 ],
@@ -15,10 +15,44 @@
 	  "css": ["alter.css","ui-lightness/jquery-ui-1.8.16.custom.css"]
     }
   ],
-  "background_page": "background.html",
+  "background": {"scripts":["background.js"]},
   "page_action": {
     "default_title": "Prettify Facebook Chat",
     "default_icon": "img/chat_16x16.png",
 	"default_popup": "popup.html" 
-  }
+  },
+  "web_accessible_resources": [
+    "img/chat_128x128.png",
+    "img/chat_16x16.png",
+    "img/chat_16x16_off.png",
+    "img/hat.png",
+    "img/like.png",
+    "emoticons/3.png",
+    "emoticons/42.png",
+    "emoticons/88.png",
+    "emoticons/a.png",
+    "emoticons/ammicc.png",
+    "emoticons/boh.png",
+    "emoticons/chucknorris.jpg",
+    "emoticons/cuore.png",
+    "emoticons/DD.png",
+    "emoticons/devil.png",
+    "emoticons/gnep.png",
+    "emoticons/human.png",
+    "emoticons/kiss.png",
+    "emoticons/mmmm.png",
+    "emoticons/nu.png",
+    "emoticons/oo.png",
+    "emoticons/ooooo.png",
+    "emoticons/pacman.png",
+    "emoticons/penguin.png",
+    "emoticons/pp.png",
+    "emoticons/robot.png",
+    "emoticons/sigh.png",
+    "emoticons/smile.png",
+    "emoticons/sole.png",
+    "emoticons/thumb.png",
+    "emoticons/uao.png",
+    "emoticons/uffiiii.png"
+  ]
 }

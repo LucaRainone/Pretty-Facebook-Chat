@@ -80,6 +80,7 @@
 				</tr>
 			</table>
 			<script type="text/javascript">
+			alert("L");
 				var sha = localStorage.getItem("pfc_shadow");
 				document.getElementById("oshadow").value = sha==null? 5 : sha;
 
@@ -101,6 +102,8 @@
 			</script>
 		</div>
 		<script type="text/javascript">
+		alert("beh");
+		alert(localStorage.getItem("hasshared"));
 				var hasshared = localStorage.getItem("hasshared");
 				if(hasshared) {
 					document.getElementById('tohide').style.display = 'block';

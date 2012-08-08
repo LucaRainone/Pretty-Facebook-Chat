@@ -224,17 +224,17 @@ if(document.domain == "facebook.com") {
 							var rtt = $window.find('textarea')[0];
 
 							var codes = {};
-							/*
+							
 							$('a').each(function() {
-								if($(this).attr("data-hovercard")) {
-									var matc= $(this).attr("data-hovercard").match(/id=([0-9]*)/);
-									if(matc.length==2) {
+
+								if($(this).attr("href")) {
+									var matc= $(this).attr("href").match(/photo\.php\?fbid=([0-9]*)/);
+									if(matc && matc.length==2) {
 										codes[matc[1]] = 1;
 									}
 								}
-
 							});
-							*/
+							
 						    
 							$('img.uiProfilePhoto').each(function() {
 								var matc = $(this).attr("src").match(/[0-9]+\_([0-9]+)\_[0-9]+\_[a-z]\.jpg/);
