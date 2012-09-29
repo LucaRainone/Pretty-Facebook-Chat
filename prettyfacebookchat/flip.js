@@ -35,7 +35,7 @@ if(document.domain == "facebook.com") {
 		pfc_font             : 11,
 		pfc_fontfamily       : "",
 		pfc_favorites_smiles : {},
-		pfc_font_color       : '#ff0000'
+		pfc_font_color       : '#333'
 	}
 	
 	// set stored configuration
