@@ -16,9 +16,17 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab ) {
 		if(changeInfo.status == "complete" && tab.url.indexOf("www.facebook.com") != -1) {
 			chrome.pageAction.show(tabId);
+			if(localStorage['pfc_fontfamily'])
+				chrome.tabs.executeScript(tabId, {code:"setTimeout(function() {changeFontFamily('"+localStorage.getItem('pfc_fontfamily')+"'); },500)"});
+			for(var i in localStorage)  {
+				console.log(i);
+				chrome.tabs.executeScript(tabId, {code:"config['"+i+"'] = '"+localStorage[i]+"'; "});
+			}
+			chrome.tabs.executeScript(tabId, {code:"setTimeout(function() { refreshConfigs();},500)"});
 		  }
 	});
 	chrome.tabs.onActiveChanged.addListener(function(tabId, changeInfo ) {

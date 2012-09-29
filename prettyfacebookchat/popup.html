@@ -34,6 +34,7 @@
 	</head>
 	<body>
 		<div id="tohide" style="display:none">
+		<form method="get" action="#" id="theForm">
 			<table class="options">
 				<tr>
 					<td><span id="text_shadow" class="gettext"></span></td><td><input id="oshadow" type="range" min="0" max="50" value="10" step="1" style="width:120px" /></td>
@@ -61,8 +62,15 @@
 						</select>
 					</td>
 				</tr>
+				<tr>
+					<td style="position:relative">Text color<div id="currentColor" style="width:50px; height:10px;  position:absolute; right:12px"></div></td>
+					<td>
+						<div id="colorpicker"></div>
+						<input type="hidden" name="color" value="#333" id="color" />
+					</td>
+				</tr>
 			</table>
-
+		</form>
 		</div>
 		<div id="please_share"></div>
 		<div style="text-align:right; position:relative" id="footerlink">

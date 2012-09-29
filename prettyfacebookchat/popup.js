@@ -28,13 +28,19 @@ function changeFont(e) {
 	localStorage.setItem("pfc_font",e.target.value);
 	chrome.tabs.executeScript(null, {code:"changeFont("+e.target.value+");"});
 }
-
+function changeFontColor(color) {
+	localStorage.setItem("pfc_font_color",color);
+	chrome.tabs.executeScript(null, {code:"changeFontColor('"+color+"');"});
+	document.getElementById("currentColor").style.backgroundColor = color;
+}
 function changeFontFamily(e) {
 	localStorage.setItem("pfc_fontfamily",e.target.options[e.target.selectedIndex].value);
 	chrome.tabs.executeScript(null, {code:"changeFontFamily('"+e.target.options[e.target.selectedIndex].value+"');"});
 }
 
 window.onload = function() {
+	
+
 	var els = document.getElementsByClassName('gettext');
 	for(var i = 0; i<els.length; i++) {
 		el = els[i];
@@ -60,6 +66,10 @@ window.onload = function() {
 			break;
 		}
 	}
+	
+	var color = localStorage.getItem("pfc_font_color");
+	changeFontColor(color);
+	
 	document.getElementById("ffamily").selectedIndex = selffindex;
 	
 	
@@ -89,8 +99,34 @@ window.onload = function() {
 	document.getElementById('fsize').onchange = changeFont;
 	document.getElementById('ffamily').onchange = changeFontFamily;
 	
+	var theForm = document.getElementById("theForm");
+	var colorpicker = document.getElementById('colorpicker');
+	colorpicker.style.width = 120;
+	colorpicker.style.height = 60;
+	var html = "";
+	for(var r =0; r<16; r+=5) {
+		for(var g=0; g<16; g+=5) {
+			for(var b=0; b<16; b+=5) {
+				html+='<div data-color="#'+r.toString(16)+""+g.toString(16)+""+b.toString(16)+'" style="cursor:crosshair; float:left; width:10px; height:10px; background-color:#'+r.toString(16)+""+g.toString(16)+""+b.toString(16)+'"></div>';
+			}
+		}
+	}
+	colorpicker.innerHTML = html;
 	
-	
+	var divs = colorpicker.getElementsByTagName('DIV');
+	var MOUSEDOWN = false;
+	for(var i = 0; i<divs.length; i++) {
+		divs[i].onmousedown = function(e) {
+			changeFontColor(this.dataset.color);
+			MOUSEDOWN = true;
+			e.preventDefault();
+		}
+		divs[i].onmouseover = function() {
+			if(MOUSEDOWN)
+				changeFontColor(this.dataset.color);
+		}
+	}
+	document.onmouseup = function() {MOUSEDOWN = false;}
 }
 
 function sharedok() {

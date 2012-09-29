@@ -101,3 +101,19 @@ img.emote_custom  {
 .choose_emoticons img:hover {
 	outline: solid 1px #ccc;
 }
+
+.pfc_fieldset {
+	padding:5px;	
+}
+.pfc_legend {
+	padding: 0 10px 0 10px;	
+}
+/*
+.fbNubFlyout.fbDockChatTabFlyout::before {
+	content:"Pretty facebook chat";
+	display:block;
+	width:100%;
+	height:20px;
+	
+}
+*/
