@@ -22,13 +22,11 @@
 	"default_popup": "popup.html" 
   },
   "web_accessible_resources": [
-  /* THEMES */
-  
-  /* HALLOWEEN */
+
     "themes/halloween/Jack-O-Lantern-icon.png",
     "themes/halloween/background-halloween.jpg",
     "themes/halloween/Jack-O-Lantern-icon16x16.png",
-  /* MEME */
+
     "themes/meme/trollface.png",
     "themes/meme/bgmeme.jpg",
     "themes/meme/trollface16x16.png",
