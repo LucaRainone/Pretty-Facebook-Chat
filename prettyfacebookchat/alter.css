@@ -66,7 +66,16 @@ div.pfc_buttons_head button.pfc_linkfb:hover  {
 	text-decoration:none;
 	cursor:pointer;
 } 
-
+.fbMercuryChatTab .titlebar .button.uiSelectorButton.pfcopt {
+	background-image:url('chrome-extension://__MSG_@@extension_id__/emoticons/smile.png');
+	margin-right: 5px;
+	display:inline-block;
+	width:16px;
+	height:25px;
+	background-repeat: no-repeat;
+	background-size: auto;
+	background-position:0 3px;
+}
 .pfc_dock {
 	cursor: pointer;
 	color: transparent !important;
@@ -108,6 +117,74 @@ img.emote_custom  {
 .pfc_legend {
 	padding: 0 10px 0 10px;	
 }
+
+/* ***** HALLOWEEN THEME ******* */
+.pfc_theme_halloween .fbNubFlyoutBody {
+	background-color:#333;
+	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/halloween/background-halloween.jpg');
+	color:#FA0;
+	font-family: Butcherman,Eater;
+}
+.pfc_theme_halloween textarea,.pfc_theme_halloween .inputContainer {
+	background-color:#000;
+	color:#fff;
+}
+.pfc_theme_halloween  .fbNubFlyoutTitlebar, .fbMercuryChatTab.focusedTab .pfc_theme_halloween .titlebar{
+	background-color:#9E6D09;
+	font-family: Butcherman,Eater;
+}
+.pfc_theme_halloween  .fbNubFlyoutTitlebar:hover {
+	background-color:#D6AA22;	
+}
+.pfc_theme_halloween .fbNubFlyoutTitlebar.titlebar::before {
+	display:block;
+	content:"";
+	position:absolute;
+	width:48px;
+	height:48px;
+	z-index:1;
+	top:-38px;
+	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/halloween/Jack-O-Lantern-icon.png')	
+}
+.fbMercuryChatTab .pfc_theme_halloween .titlebar .button.uiSelectorButton.pfcopt {
+	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/halloween/Jack-O-Lantern-icon16x16.png');
+}
+.pfc_theme_halloween  .fbNubFlyoutTitlebar {
+	border:solid 1px #9E6D09;
+}
+
+/* ***** MEME THEME ******* */
+.pfc_theme_meme .fbNubFlyoutBody {
+	background-color:#fff;
+	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/meme/bgmeme.jpg');
+}
+.pfc_theme_meme textarea,.pfc_theme_halloween .inputContainer {
+
+}
+.pfc_theme_meme  .fbNubFlyoutTitlebar, .fbMercuryChatTab.focusedTab .pfc_theme_meme .titlebar{
+	
+}
+.pfc_theme_meme  .fbNubFlyoutTitlebar:hover {
+	
+}
+.pfc_theme_meme .fbNubFlyoutTitlebar.titlebar::before {
+	display:block;
+	content:"";
+	position:absolute;
+	width:48px;
+	height:48px;
+	z-index:1;
+	top:-38px;
+	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/meme/trollface.png')	
+}
+.fbMercuryChatTab .pfc_theme_meme .titlebar .button.uiSelectorButton.pfcopt {
+	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/meme/trollface16x16.png');
+}
+.pfc_theme_meme  .fbNubFlyoutTitlebar {
+
+}
+
+
 /*
 .fbNubFlyout.fbDockChatTabFlyout::before {
 	content:"Pretty facebook chat";

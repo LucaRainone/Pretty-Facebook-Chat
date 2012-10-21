@@ -37,7 +37,10 @@ function changeFontFamily(e) {
 	localStorage.setItem("pfc_fontfamily",e.target.options[e.target.selectedIndex].value);
 	chrome.tabs.executeScript(null, {code:"changeFontFamily('"+e.target.options[e.target.selectedIndex].value+"');"});
 }
-
+function changeTheme(e) {
+	localStorage.setItem("pfc_theme",e.target.options[e.target.selectedIndex].value);
+	chrome.tabs.executeScript(null, {code:"changeTheme('"+e.target.options[e.target.selectedIndex].value+"');"});
+}
 window.onload = function() {
 	
 
@@ -98,8 +101,10 @@ window.onload = function() {
 	document.getElementById('osize').onchange = changeSize;
 	document.getElementById('fsize').onchange = changeFont;
 	document.getElementById('ffamily').onchange = changeFontFamily;
+	document.getElementById('ftheme').onchange = changeTheme;
 	
 	var theForm = document.getElementById("theForm");
+
 	var colorpicker = document.getElementById('colorpicker');
 	colorpicker.style.width = 120;
 	colorpicker.style.height = 60;
@@ -127,6 +132,7 @@ window.onload = function() {
 		}
 	}
 	document.onmouseup = function() {MOUSEDOWN = false;}
+
 }
 
 function sharedok() {

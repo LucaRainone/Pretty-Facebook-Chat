@@ -6,7 +6,7 @@
   "permissions": [
     "tabs", "http://www.facebook.com/*", "https://www.facebook.com/*"
 ],
-  "version": "1.5.1",
+  "version": "1.6",
   "icons": { "128": "img/chat_128x128.png", "16":"img/chat_16x16.png" },
   "content_scripts": [
     {
@@ -22,6 +22,18 @@
 	"default_popup": "popup.html" 
   },
   "web_accessible_resources": [
+  /* THEMES */
+  
+  /* HALLOWEEN */
+    "themes/halloween/Jack-O-Lantern-icon.png",
+    "themes/halloween/background-halloween.jpg",
+    "themes/halloween/Jack-O-Lantern-icon16x16.png",
+  /* MEME */
+    "themes/meme/trollface.png",
+    "themes/meme/bgmeme.jpg",
+    "themes/meme/trollface16x16.png",
+    
+    
     "img/chat_128x128.png",
     "img/chat_16x16.png",
     "img/chat_16x16_off.png",

@@ -35,7 +35,8 @@ if(document.domain == "facebook.com") {
 		pfc_font             : 11,
 		pfc_fontfamily       : "",
 		pfc_favorites_smiles : {},
-		pfc_font_color       : '#333'
+		pfc_font_color       : '#333',
+		pfc_theme            : ''
 	}
 	
 	// set stored configuration
@@ -53,6 +54,10 @@ if(document.domain == "facebook.com") {
 		config.pfc_favorites_smiles = [];
 	}
 	
+	// load font for themes
+	$('head').append("<link href='https://fonts.googleapis.com/css?family=Eater' rel='stylesheet' type='text/css'>");
+	
+	
 	function refreshConfigs() {
 		for(var option in config) {
 			if(localStorage.getItem(option) != null) {
@@ -67,7 +72,7 @@ if(document.domain == "facebook.com") {
 		}
 	}
 	function setConfig(option,value) {
-		config[option].current = value;
+		config[option] = value;
 		localStorage.setItem(option,value);
 	}
 	function changeFont(f) {
@@ -87,7 +92,19 @@ if(document.domain == "facebook.com") {
 			$(this).css("font-family",f);
 		});
 	}
-	
+	function changeTheme(theme) {
+		var classNames = $('#fbDockChat .fbDockChatTabFlyout').attr("class").split(" ");
+		for(var i = 0; i<classNames.length; i++) {
+			if(classNames[i].substr(0,10) == 'pfc_theme_') {
+				$('#fbDockChat .fbDockChatTabFlyout').removeClass(classNames[i]);
+				break;
+			}
+		}
+		if(theme != '') {
+			$('#fbDockChat .fbDockChatTabFlyout').addClass('pfc_theme_'+theme);
+		}
+		setConfig('pfc_theme',theme);
+	}
 	if(config['pfc_fontfamily'] != "") {
 		changeFontFamily(config['pfc_fontfamily']);
 	}
@@ -206,6 +223,9 @@ if(document.domain == "facebook.com") {
 					
 				}
 				$window.addClass('prettyfb');
+				if(config.pfc_theme != '') {
+					$window.addClass('pfc_theme_'+config.pfc_theme);
+				}
 				
 				if(config.pfc_fontfamily!="")
 					$window.css("font-family",config.pfc_fontfamily);
@@ -219,7 +239,7 @@ if(document.domain == "facebook.com") {
 					$window.find('.uiTextareaAutogrow.input').css('width',config.pfc_size-20);
 					$window.find(".fbDockChatTabFlyout .conversationContainer .fbChatMessage").css('max-width',-config.pfc_size-50);
 				}
-				$window.find(".mls.rfloat").prepend('<a href="#" class="button uiSelectorButton pfcopt"><img src="'+chrome.extension.getURL('emoticons/smile.png')+'" valign="middle" style="margin-top:5px; margin-right:5px"/></a>');
+				$window.find(".mls.rfloat").prepend('<a href="#" class="button uiSelectorButton pfcopt"></a>');
 				var suggest = false ;
 				var intervalHoverSmile = 0;
 				var intHovertimeout = 0;
