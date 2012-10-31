@@ -6,7 +6,7 @@
   "permissions": [
     "tabs", "http://www.facebook.com/*", "https://www.facebook.com/*"
 ],
-  "version": "1.6",
+  "version": "1.6.1",
   "icons": { "128": "img/chat_128x128.png", "16":"img/chat_16x16.png" },
   "content_scripts": [
     {
@@ -31,7 +31,29 @@
     "themes/meme/bgmeme.jpg",
     "themes/meme/trollface16x16.png",
     
+
+    "themes/hellokitty/hk.png",
+    "themes/hellokitty/hkbg.jpg",
+    "themes/hellokitty/hk16x16.png",
+    "themes/hellokitty/hk24x24.png",
     
+
+    "themes/juventus/Juventus.png",
+    "themes/juventus/juventus-big.png",
+    "themes/juventus/delpiero.png",
+    "themes/juventus/juventusflag.png",
+    "themes/juventus/Juventus16x16.png",
+    "themes/juventus/Juventus24x24.png",
+
+    "themes/milan/milan.png",
+    "themes/milan/milan-big.png",
+    "themes/milan/milanflag.png",
+    "themes/milan/milan16x16.png",
+    "themes/milan/milan24x24.png",
+    "themes/milan/Milan_Fc.png",
+    
+    
+    "img/twitter.png",
     "img/chat_128x128.png",
     "img/chat_16x16.png",
     "img/chat_16x16_off.png",

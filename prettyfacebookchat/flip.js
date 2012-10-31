@@ -56,6 +56,7 @@ if(document.domain == "facebook.com") {
 	
 	// load font for themes
 	$('head').append("<link href='https://fonts.googleapis.com/css?family=Eater' rel='stylesheet' type='text/css'>");
+	$('head').append("<link href='https://fonts.googleapis.com/css?family=Cardo' rel='stylesheet' type='text/css'>");
 	
 	
 	function refreshConfigs() {
@@ -281,7 +282,8 @@ if(document.domain == "facebook.com") {
 							var imgs = '<div class="pfc_buttons_head">';
 							imgs += '<a href="https://www.facebook.com/Prettychat" class="pfc_linkfb" title="questions? suggestions?" style="margin-right:10px;">' +chrome.i18n.getMessage("bfan")+'</a>';
 							imgs += '<a href="http://www.youtube.com/watch?v=ktYfJUnmey0" target="_blank" style="margin-right:10px;">Video tutorial</a>';
-							imgs += '<a href="#" class="buttonsendfav">'+chrome.i18n.getMessage("send_stats")+'</a>';
+							//imgs += '<a href="#" class="buttonsendfav">'+chrome.i18n.getMessage("send_stats")+'</a>';
+							imgs += '<a href="https://twitter.com/intent/follow?original_referer=http%3A%2F%2Fwww.facebook.com&screen_name=chumkiu81&source=followbutton&variant=2.0" class="twitterfollowme" target="_blank">Follow me</a>';
 							imgs += '</div>';
 							imgs +='<div class="choose_emoticons">';
 							for(var i=0; i<config.pfc_favorites_smiles.length; i++) {

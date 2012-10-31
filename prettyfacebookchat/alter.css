@@ -1,3 +1,9 @@
+.twitterfollowme {
+	padding-left:20px;
+	background-image:url('chrome-extension://__MSG_@@extension_id__/img/twitter.png');
+	background-repeat:no-repeat;
+	background-position: top left;
+}
 .fbDockChatTab .conversationContainer .fbChatMessage {
 	max-width:inherit !important;
 }
@@ -185,12 +191,141 @@ img.emote_custom  {
 }
 
 
-/*
-.fbNubFlyout.fbDockChatTabFlyout::before {
-	content:"Pretty facebook chat";
-	display:block;
-	width:100%;
-	height:20px;
-	
+/* ***** HELLO KITTY THEME ******* */
+.pfc_theme_hellokitty .fbNubFlyoutBody {
+	background-color:#ffacda;
+	background-repeat: no-repeat;
+	background-position: bottom right;
+	color:#110033;
+	font-family: Cardo;
+	background:url('chrome-extension://__MSG_@@extension_id__/themes/hellokitty/hkbg.jpg') bottom right no-repeat,-webkit-linear-gradient(right, #fefcfd 0%,#ffe1f3 250px);
 }
-*/
+.pfc_theme_hellokitty textarea,.pfc_theme_hellokitty .inputContainer {
+	background-color:#720B5D;
+	color:#fff;
+}
+.pfc_theme_hellokitty  .fbNubFlyoutTitlebar, .fbMercuryChatTab.focusedTab .pfc_theme_hellokitty .titlebar{
+	background-color:#720B5D;
+	font-family: Cardo;
+}
+.pfc_theme_hellokitty  .fbNubFlyoutTitlebar:hover {
+	background-color:#720B5D;
+}
+.pfc_theme_hellokitty .fbNubFlyoutTitlebar.titlebar::before {
+	display:block;
+	content:"";
+	position:absolute;
+	width:48px;
+	height:48px;
+	z-index:1;
+	top:-38px;
+	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/hellokitty/hk.png');
+}
+.fbMercuryChatTab .pfc_theme_hellokitty .titlebar .button.uiSelectorButton.pfcopt {
+	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/hellokitty/hk16x16.png');
+}
+.pfc_theme_hellokitty  .fbNubFlyoutTitlebar {
+
+}
+.fbMercuryChatTab .pfc_theme_hellokitty .emoticonsPanel a.emoteTogglerImg,.fbMercuryChatTab .pfc_theme_hellokitty .emoticonsPanel .emoteTogglerImg:hover {
+		background-image:url('chrome-extension://__MSG_@@extension_id__/themes/hellokitty/hk24x24.png');
+		background-position:0 0;
+		
+}
+
+
+/* ***** JUVENTUS THEME ******* */
+.pfc_theme_juventus .fbNubFlyoutBody {
+	background-color:#efefef;
+	background-repeat: no-repeat;
+	background-position: bottom right;
+	color:#000;
+	font-family: Cardo;
+	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/juventus/delpiero.png');
+	background-repeat: no-repeat;
+}
+.pfc_theme_juventus textarea,.pfc_theme_juventus .inputContainer {
+	background-color:#e1ddde;
+}
+.pfc_theme_juventus  .fbNubFlyoutTitlebar, .fbMercuryChatTab.focusedTab .pfc_theme_juventus .titlebar{
+	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/juventus/juventusflag.png');
+		background-position: 0px -70px;
+}
+.pfc_theme_juventus  .fbNubFlyoutTitlebar:hover {
+	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/juventus/juventusflag.png');
+
+}
+.pfc_theme_juventus .fbNubFlyoutTitlebar.titlebar::before {
+	display:block;
+	content:"";
+	position:absolute;
+	width:48px;
+	height:48px;
+	z-index:1;
+	top:-38px;
+	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/juventus/Juventus.png');
+}
+.fbMercuryChatTab .pfc_theme_juventus .titlebar .button.uiSelectorButton.pfcopt {
+	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/juventus/Juventus16x16.png');
+}
+.pfc_theme_juventus  .fbNubFlyoutTitlebar {
+
+}
+.fbMercuryChatTab .pfc_theme_juventus .emoticonsPanel a.emoteTogglerImg,.fbMercuryChatTab .pfc_theme_juventus .emoticonsPanel .emoteTogglerImg:hover {
+		background-image:url('chrome-extension://__MSG_@@extension_id__/themes/juventus/Juventus24x24.png');
+		background-position:0 0;
+		
+}
+
+/* ***** MILAN THEME ******* */
+.pfc_theme_milan .fbNubFlyoutBody {
+	background-color:#333;
+	background-repeat: no-repeat;
+	background-position: bottom right;
+	color:#f33;
+	font-family: Cardo;
+
+	background-repeat: no-repeat;
+}
+.pfc_theme_milan .fbNubFlyoutBody a {
+	color:#a00;	
+}
+.pfc_theme_milan textarea,.pfc_theme_milan .inputContainer {
+	background-color:#000;
+	color:#fff;
+}
+.pfc_theme_milan  .fbNubFlyoutTitlebar, .fbMercuryChatTab.focusedTab .pfc_theme_milan .titlebar{
+	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/milan/milanflag.png');
+		background-position: 0px -70px;
+}
+.pfc_theme_milan  .fbNubFlyoutTitlebar:hover {
+	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/milan/milanflag.png');
+
+}
+.pfc_theme_milan .fbNubFlyoutTitlebar.titlebar::before {
+	display:block;
+	content:"";
+	position:absolute;
+	width:48px;
+	height:48px;
+	z-index:1;
+	top:-38px;
+	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/milan/milan.png');
+}
+.fbMercuryChatTab .pfc_theme_milan .titlebar .button.uiSelectorButton.pfcopt {
+	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/milan/milan16x16.png');
+}
+.pfc_theme_milan  .fbNubFlyoutTitlebar {
+
+}
+.fbMercuryChatTab .pfc_theme_milan .emoticonsPanel a.emoteTogglerImg,.fbMercuryChatTab .pfc_theme_milan .emoticonsPanel .emoteTogglerImg:hover {
+		background-image:url('chrome-extension://__MSG_@@extension_id__/themes/milan/milan24x24.png');
+		background-position:0 0;
+		
+}
+
+
+
+
+
+
