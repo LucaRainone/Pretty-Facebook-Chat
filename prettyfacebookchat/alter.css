@@ -326,6 +326,202 @@ img.emote_custom  {
 
 
 
+/* ***** CHRISTMATS THEME ******* */
+.pfc_theme_christmas .fbNubFlyoutBody {
+	background-color:#375c28;
+	background-repeat: no-repeat;
+	background-position: bottom right;
+	color:#fafafa;
+	text-shadow:1px 1px 0px #000;
+	background:url('chrome-extension://__MSG_@@extension_id__/themes/christmas/bg.png') bottom right no-repeat,-webkit-linear-gradient(top, #79040a 0%,#a50008 250px);
+}
+.pfc_theme_christmas textarea,.pfc_theme_christmas .inputContainer {
+	background-color:#600005;
+	color:#fff;
+}
+.pfc_theme_christmas  .fbNubFlyoutTitlebar, .fbMercuryChatTab.focusedTab .pfc_theme_christmas .titlebar{
+	background-color:#1e3100;
+	font-family: Cardo;
+}
+.pfc_theme_christmas  .fbNubFlyoutTitlebar:hover {
+	background-color:#1e3100;
+}
+.pfc_theme_christmas .fbChatMessageGroup {
+	border-top: 1px solid #600005;	
+}
+.pfc_theme_christmas .fbNubFlyoutTitlebar.titlebar::before {
+	display:block;
+	content:"";
+	position:absolute;
+	width:50px;
+	height:57px;
+	z-index:1;
+	top:-30px;
+	left:-20px;
+	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/christmas/hat.png');
+}
+.fbMercuryChatTab .pfc_theme_christmas .titlebar .button.uiSelectorButton.pfcopt {
+	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/christmas/christmas16x16.png');
+}
+.pfc_theme_christmas div.fbChatConvDateBreak {
+	color:#ffffff;	
+}
+.pfc_theme_christmas .fbNubFlyoutBody a,.pfc_theme_christmas .fbNubFlyoutBody .filename {
+	color: #90f892;	
+}
+.pfc_theme_christmas  .fbNubFlyoutTitlebar {
+
+}
+.fbMercuryChatTab .pfc_theme_christmas .emoticonsPanel a.emoteTogglerImg,.fbMercuryChatTab .pfc_theme_christmas .emoticonsPanel .emoteTogglerImg:hover {
+		background-image:url('chrome-extension://__MSG_@@extension_id__/themes/christmas/christmas24x24.png');
+		background-position:0 0;
+		
+}
+
+
+/* ***** Vampire THEME ******* */
+.pfc_theme_vampire .fbNubFlyoutBody {
+	background-color:#000;
+	background-repeat: no-repeat;
+	background-position: bottom right;
+	color:#fafafa;
+	background:url('chrome-extension://__MSG_@@extension_id__/themes/vampire/bg.png') bottom right no-repeat,-webkit-linear-gradient(left, #1c0606 0%,#160505 200px);
+}
+.pfc_theme_vampire textarea,.pfc_theme_vampire .inputContainer {
+	background-color:#300;
+	color:#fff;
+}
+.pfc_theme_vampire  .fbNubFlyoutTitlebar, .fbMercuryChatTab.focusedTab .pfc_theme_vampire .titlebar{
+	background-color:#200;
+	font-family: Cardo;
+}
+.pfc_theme_vampire  .fbNubFlyoutTitlebar:hover {
+	background-color:#300;
+}
+.pfc_theme_vampire .fbChatMessageGroup {
+	border-top: 1px solid #000;	
+}
+.pfc_theme_vampire .fbNubFlyoutTitlebar.titlebar::before {
+	display:block;
+	content:"";
+	position:absolute;
+	width:150px;
+	height:157px;
+	z-index:1;
+	top:0px;
+	left:0px;
+	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/vampire/vampiretop.png');
+}
+.fbMercuryChatTab .pfc_theme_vampire .titlebar .button.uiSelectorButton.pfcopt {
+	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/vampire/vampire16x16.png');
+}
+.pfc_theme_vampire div.fbChatConvDateBreak {
+	color:#ffffff;	
+}
+.pfc_theme_vampire .fbNubFlyoutBody a,.pfc_theme_vampire .fbNubFlyoutBody .filename {
+	color: #90f892;	
+}
+.pfc_theme_vampire  .fbNubFlyoutTitlebar {
+
+}
+.fbMercuryChatTab .pfc_theme_vampire .emoticonsPanel a.emoteTogglerImg,.fbMercuryChatTab .pfc_theme_vampire .emoticonsPanel .emoteTogglerImg:hover {
+		background-image:url('chrome-extension://__MSG_@@extension_id__/themes/vampire/vampire24x24.png');
+		background-position:0 0;
+		
+}
+
+
+
+
+/* ***** michaeljackson THEME ******* */
+.pfc_theme_michaeljackson .fbNubFlyoutBody {
+	background-color:#000;
+	background-repeat: no-repeat;
+	background-position: bottom right;
+	color:#fafafa;
+	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/michaeljackson/bg.png');
+}
+.pfc_theme_michaeljackson textarea,.pfc_theme_michaeljackson .inputContainer {
+	background-color:#222;
+	color:#fff;
+}
+.pfc_theme_michaeljackson  .fbNubFlyoutTitlebar, .fbMercuryChatTab.focusedTab .pfc_theme_michaeljackson .titlebar{
+	background-color:#6f5029;
+	font-family: Cardo;
+}
+.pfc_theme_michaeljackson  .fbNubFlyoutTitlebar:hover {
+	background-color:#afafaf;
+	color:#000;
+}
+.pfc_theme_michaeljackson .fbChatMessageGroup {
+	border-top: 1px solid #000;	
+}
+.pfc_theme_michaeljackson .fbNubFlyoutTitlebar.titlebar::before {
+	display:block;
+	content:"";
+	position:absolute;
+	width:64px;
+	height:64px;
+	z-index:1;
+	top:-50px;
+	left:0px;
+	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/michaeljackson/mjtop.png');
+}
+.fbMercuryChatTab .pfc_theme_michaeljackson .titlebar .button.uiSelectorButton.pfcopt {
+	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/michaeljackson/mj16x16.png');
+}
+.pfc_theme_michaeljackson div.fbChatConvDateBreak {
+	color:#ffffff;	
+}
+.pfc_theme_michaeljackson .fbNubFlyoutBody a,.pfc_theme_michaeljackson .fbNubFlyoutBody .filename {
+	color: #90f892;	
+}
+.fbMercuryChatTab .pfc_theme_michaeljackson .emoticonsPanel a.emoteTogglerImg,.fbMercuryChatTab .pfc_theme_michaeljackson .emoticonsPanel .emoteTogglerImg:hover {
+	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/michaeljackson/mj24x24.png');
+	background-position:0 0;
+}
+
+/* ***** GANGNAM THEME ******* */
+.pfc_theme_gangnam .fbNubFlyoutBody {
+	background-color:#e1dedb;
+	background-repeat: no-repeat;
+	background-position: bottom right;
+	color:#110033;
+	font-family: Cardo;
+	background:url('chrome-extension://__MSG_@@extension_id__/themes/gangnam/bg.png') bottom right no-repeat,-webkit-linear-gradient(top, #fff 0%,#fff 250px);
+}
+.pfc_theme_gangnam textarea,.pfc_theme_gangnam .inputContainer {
+	background-color:#7a95a8;
+	color:#fff;
+}
+.pfc_theme_gangnam  .fbNubFlyoutTitlebar, .fbMercuryChatTab.focusedTab .pfc_theme_gangnam .titlebar{
+	background-color:#7a95a8;
+	font-family: Cardo;
+}
+.pfc_theme_gangnam  .fbNubFlyoutTitlebar:hover {
+	background-color:#7a95a8;
+}
+.pfc_theme_gangnam .fbNubFlyoutTitlebar.titlebar::before {
+	display:block;
+	content:"";
+	position:absolute;
+	width:92px;
+	height:48px;
+	z-index:1;
+	top:-48px;
+	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/gangnam/ggtop.png');
+}
+.fbMercuryChatTab .pfc_theme_gangnam .titlebar .button.uiSelectorButton.pfcopt {
+	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/gangnam/gg16x16.png');
+}
+.pfc_theme_gangnam  .fbNubFlyoutTitlebar {
+
+}
+.fbMercuryChatTab .pfc_theme_gangnam .emoticonsPanel a.emoteTogglerImg,.fbMercuryChatTab .pfc_theme_gangnam .emoticonsPanel .emoteTogglerImg:hover {
+		background-image:url('chrome-extension://__MSG_@@extension_id__/themes/gangnam/gg24x24.png');
+		background-position:0 0;
+		
+}
 
 
 

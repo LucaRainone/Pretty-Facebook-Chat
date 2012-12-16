@@ -6,7 +6,7 @@
   "permissions": [
     "tabs", "http://www.facebook.com/*", "https://www.facebook.com/*"
 ],
-  "version": "1.6.2",
+  "version": "1.6.3",
   "icons": { "128": "img/chat_128x128.png", "16":"img/chat_16x16.png" },
   "content_scripts": [
     {
@@ -51,6 +51,33 @@
     "themes/milan/milan16x16.png",
     "themes/milan/milan24x24.png",
     "themes/milan/Milan_Fc.png",
+    
+    
+
+    "themes/christmas/hat.png",
+    "themes/christmas/bg.png",
+    "themes/christmas/christmas16x16.png",
+    "themes/christmas/christmas24x24.png",
+    
+    
+
+    "themes/vampire/vampiretop.png",
+    "themes/vampire/bg.png",
+    "themes/vampire/vampire16x16.png",
+    "themes/vampire/vampire24x24.png",
+    
+    
+    "themes/michaeljackson/mjtop.png",
+    "themes/michaeljackson/bg.png",
+    "themes/michaeljackson/mj16x16.png",
+    "themes/michaeljackson/mj24x24.png",
+    
+    
+    "themes/gangnam/ggtop.png",
+    "themes/gangnam/bg.png",
+    "themes/gangnam/gg16x16.png",
+    "themes/gangnam/gg24x24.png",
+    
     
     
     "img/twitter.png",
