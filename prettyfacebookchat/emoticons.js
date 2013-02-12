@@ -52,7 +52,7 @@ EMOTICONS.extrasem = [
 		
 		
 		// skype
-		':::GROUP:Smileys'
+		':::GROUP:smileys'
 		,'447573315282245'
 		,'447573328615577'
 		,'447573341948909'
@@ -237,7 +237,7 @@ EMOTICONS.extrasem = [
 		
 		
 		
-		,':::GROUP:MEME'
+		,':::GROUP:meme'
 		,'447584608614449'
 		,'447584628614447'
 		,'447584638614446'
@@ -351,7 +351,7 @@ EMOTICONS.extrasem = [
 		,'447585658614344'
 		,'447585668614343'
 		
-		,':::GROUP:Various'
+		,':::GROUP:various'
 		,'167971369931778' // troll
 		,'127701797275687' // foreveralone
 		,'259548204069438' // challenge accepted

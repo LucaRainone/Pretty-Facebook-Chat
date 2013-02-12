@@ -16,7 +16,7 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-
+function old() {
 // included emoticons.js
 if(document.domain == "facebook.com") {
 	
@@ -603,4 +603,5 @@ function send_favorites() {
 		var $html = $(html);
 		$html.submit();
 	}
+}
 }

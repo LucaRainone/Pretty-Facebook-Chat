@@ -6,16 +6,19 @@
   "permissions": [
     "tabs", "http://www.facebook.com/*", "https://www.facebook.com/*"
 ],
-  "version": "1.6.3",
+  "version": "2.0",
   "icons": { "128": "img/chat_128x128.png", "16":"img/chat_16x16.png" },
   "content_scripts": [
     {
 	"matches": ["http://www.facebook.com/*","https://www.facebook.com/*"],
-      "js": ["jslib/jquery-1.7.1.min.js", "jslib/jquery-ui-1.8.16.custom.min.js","jslib/jQuery.easing.js","jslib/md5.js","emoticons.js","flip.js"],
-	  "css": ["alter.css","ui-lightness/jquery-ui-1.8.16.custom.css"]
+      "js": ["jslib/Rain1/Overlay.js","jslib/jquery-1.9.1.min.js","jslib/DraggableAndResizable.js","emoticons.js","jslib/Emoticonize.js","version2.js"],
+	  "css": ["alter.css"]
     }
   ],
-  "background": {"scripts":["background.js"]},
+  "background": {	
+  		"scripts":["jslib/Rain1/Overlay.js","background.js"],
+  		"persistent":false
+  	},
   "page_action": {
     "default_title": "Prettify Facebook Chat",
     "default_icon": "img/chat_16x16.png",
@@ -112,6 +115,8 @@
     "emoticons/sole.png",
     "emoticons/thumb.png",
     "emoticons/uao.png",
-    "emoticons/uffiiii.png"
+    "emoticons/uffiiii.png",
+    "emoticons/meme.png",
+    "emoticons/smileys.png"
   ]
 }

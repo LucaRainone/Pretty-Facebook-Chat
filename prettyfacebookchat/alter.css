@@ -80,7 +80,7 @@ div.pfc_buttons_head button.pfc_linkfb:hover  {
 	height:25px;
 	background-repeat: no-repeat;
 	background-size: auto;
-	background-position:0 3px;
+	background-position:4px 3px;
 }
 .pfc_dock {
 	cursor: pointer;
@@ -95,6 +95,8 @@ div.pfc_buttons_head button.pfc_linkfb:hover  {
 	width:15px;
 	height:29px;
 }
+
+
 
 .pfc_dock i {
 	display:block;
@@ -124,6 +126,141 @@ img.emote_custom  {
 	padding: 0 10px 0 10px;	
 }
 
+
+.pfc_service_drag {
+	position: absolute;
+	width: 40%;
+	height: 30px;
+	background-color: rgb(197, 59, 59);
+	top: -30px;
+	border: 1px solid rgb(191, 212, 243);
+	border-bottom: none;
+	border-radius: 10px 10px 0 0;
+	right: 0;
+	box-shadow: 0 0 10px #666;
+	z-index: -1;
+}
+.pfc_service_resize {
+	position:absolute;	
+	width:20px;
+	height:20px;
+	background-color:#f00;
+	bottom: -10px;
+	right:-10px;
+	cursor: se-resize;
+	z-index:-1;
+	opacity:.5;
+}
+.pfc .fbMercuryChatTab .emoticonsPanel {
+	right:0 !important;
+	left: auto !important;	
+}
+.pfcopt {
+	position:relative;
+	z-index:99999;
+	padding-left:4px;
+	padding-right:4px;
+}
+.pfcopt.statuson{
+	box-shadow:0px 1px 0px #fff;
+}
+#pfc_emoticon_window {
+	position:fixed;
+	overflow:auto;
+	display:none;
+	background-color:#fff;
+	width: 300px;
+	height: 250px;
+	overflow-x:hidden;
+	z-index:999;
+	border: 1px solid #aaa;
+
+	box-shadow: 2px 2px 6px #ABC;
+}
+#pfc_emoticon_window img {
+
+}
+#pfc_emoticon_window img:hover {
+	outline: solid 1px #ccc;
+}
+
+
+
+
+.pfc_emoticon_tab_container {
+	width:300px;
+	height:20px;
+	border-bottom: 1px solid #aaa;
+	margin-top:3px;
+	
+}
+.pfc_emoticon_tab_container:after,.pfc_emoticon_tab_container:before {
+	content:"";
+	display:table;
+		
+}
+.pfc_clear {
+	clear:both;
+	visibility:hidden;
+	height:0;
+	font-size:0;	
+}
+.pfc_emoticon_tab_container:after {
+	clear:both;
+}
+.pfc_emoticon_tab {
+	
+	height:20px;
+	border: 1px solid #aaa;
+	border-bottom:none;
+	position:relative;
+	top:-1px;
+
+	width:40px;
+	height:20px;
+	background-repeat:no-repeat;
+	background-position:50% 50%;
+	float:left;
+	z-index:4;
+	background-color:#efefef;
+	border-radius: 8px 8px 0px 0px;
+	cursor:pointer;
+}
+.pfc_emoticon_tab.statuson {
+	background-color:#fff;	
+	border-bottom:solid 1px #fff;
+}
+.pfc_emoticon_tab.pfc_emoticon_tab_default {
+	background-image:url('chrome-extension://__MSG_@@extension_id__/emoticons/smile.png');
+	
+}
+.pfc_emoticon_tab.pfc_emoticon_tab_meme {
+	background-image:url('chrome-extension://__MSG_@@extension_id__/emoticons/meme.png');
+	
+}
+.pfc_emoticon_tab.pfc_emoticon_tab_smileys {
+	background-image:url('chrome-extension://__MSG_@@extension_id__/emoticons/smileys.png');
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+#fbDockChatTabs .pfc.fbMercuryChatTab.opened {
+
+}
+.pfc.fbMercuryChatTab.focusedTab {
+	z-index:99;	
+}
 /* ***** HALLOWEEN THEME ******* */
 .pfc_theme_halloween .fbNubFlyoutBody {
 	background-color:#333;
