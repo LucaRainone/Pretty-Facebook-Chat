@@ -18,7 +18,7 @@
  */
 function changeRounded(e) {
 	localStorage.setItem("pfc_shadow",e.target.value);
-	chrome.tabs.executeScript(null, {code:"config.pfc_shadow = "+e.target.value+"; EVENT_SHADOW_CHANGED = true;"});
+	chrome.tabs.executeScript(null, {code:"changeShadow("+e.target.value+")"});
 }
 function changeSize(e) {
 	localStorage.setItem("pfc_size",e.target.value);
@@ -41,6 +41,7 @@ function changeTheme(e) {
 	localStorage.setItem("pfc_theme",e.target.options[e.target.selectedIndex].value);
 	chrome.tabs.executeScript(null, {code:"changeTheme('"+e.target.options[e.target.selectedIndex].value+"');"});
 }
+
 window.onload = function() {
 	
 
@@ -132,6 +133,47 @@ window.onload = function() {
 		}
 	}
 	document.onmouseup = function() {MOUSEDOWN = false;}
+	
+	
+	
+	// SHADOW
+	
+	var circleShadow = document.querySelector('#circular_pointer');
+	var _mousedownCircle = function(e) {
+		e.preventDefault();
+		console.log(e);
+		var prevX = e.pageX;
+		var prevY = e.pageY;
+		var initX = +circleShadow.style.left.replace("px","");
+		var initY = +circleShadow.style.top.replace("px","");
+		var _mousemove = function(mme) {
+			console.log("mouse move");
+			var deltaX = mme.pageX-prevX;
+			var deltaY = mme.pageY-prevY;
+			var x = + deltaX + initX;
+			var y = + deltaY + initY;
+			
+			var raggio = Math.sqrt( Math.pow(20-x,2)+Math.pow(20-y,2) );
+			if(raggio > 20) {
+				var k = raggio/20;
+				x = 20 + (x-20)/k;
+				y = 20 + (y-20)/k
+			}
+			circleShadow.style.top = y+"px";
+			circleShadow.style.left = x+"px";
+			chrome.tabs.executeScript(null, {code:"changeShadow(16,"+(-x+20)*2+","+(-y+20)*2+");"});
+			
+		}
+		var _mouseup = function() {
+			console.log("mouseup");
+			document.removeEventListener('mousemove',_mousemove);
+			document.removeEventListener('mouseup',_mouseup);
+		}
+		document.addEventListener('mousemove',_mousemove);
+		document.addEventListener('mouseup',_mouseup);
+	}
+	circleShadow.addEventListener('mousedown', _mousedownCircle);
+	
 
 }
 
