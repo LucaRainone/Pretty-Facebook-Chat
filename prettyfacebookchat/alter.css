@@ -4,10 +4,10 @@
 	background-repeat:no-repeat;
 	background-position: top left;
 }
-.fbDockChatTab .conversationContainer .fbChatMessageGroup .fsm {
+.fbDockChatTab .conversationContainer .fbChatConvItem .fsm {
 	max-width:inherit !important;
 }
-div.messages .fbChatMessageGroup .fsm a {
+div.messages .fbChatConvItem .fsm a {
 	word-wrap: break-word !important;
 	white-space: pre-wrap;
 }
@@ -23,37 +23,37 @@ div.messages {
 .typingIndicator {
 	width:200px;
 }
-.fbNubFlyout.fbDockChatTabFlyout.fontbig10 .fbChatMessageGroup .fsm {
+.fbNubFlyout.fbDockChatTabFlyout.fontbig10 .fbChatConvItem .fsm {
 	font-size:10px;
 }
-.fbNubFlyout.fbDockChatTabFlyout.fontbig11 .fbChatMessageGroup .fsm {
+.fbNubFlyout.fbDockChatTabFlyout.fontbig11 .fbChatConvItem .fsm {
 	font-size:11px;
 }
-.fbNubFlyout.fbDockChatTabFlyout.fontbig12 .fbChatMessageGroup .fsm {
+.fbNubFlyout.fbDockChatTabFlyout.fontbig12 .fbChatConvItem .fsm {
 	font-size:12px;
 }
-.fbNubFlyout.fbDockChatTabFlyout.fontbig13 .fbChatMessageGroup .fsm {
+.fbNubFlyout.fbDockChatTabFlyout.fontbig13 .fbChatConvItem .fsm {
 	font-size:13px;
 }
-.fbNubFlyout.fbDockChatTabFlyout.fontbig14 .fbChatMessageGroup .fsm {
+.fbNubFlyout.fbDockChatTabFlyout.fontbig14 .fbChatConvItem .fsm {
 	font-size:14px;
 }
-.fbNubFlyout.fbDockChatTabFlyout.fontbig15 .fbChatMessageGroup .fsm {
+.fbNubFlyout.fbDockChatTabFlyout.fontbig15 .fbChatConvItem .fsm {
 	font-size:15px;
 }
-.fbNubFlyout.fbDockChatTabFlyout.fontbig16 .fbChatMessageGroup .fsm{
+.fbNubFlyout.fbDockChatTabFlyout.fontbig16 .fbChatConvItem .fsm{
 	font-size:16px;
 }
-.fbNubFlyout.fbDockChatTabFlyout.fontbig17 .fbChatMessageGroup .fsm {
+.fbNubFlyout.fbDockChatTabFlyout.fontbig17 .fbChatConvItem .fsm {
 	font-size:17px;
 }
-.fbNubFlyout.fbDockChatTabFlyout.fontbig18 .fbChatMessageGroup .fsm {
+.fbNubFlyout.fbDockChatTabFlyout.fontbig18 .fbChatConvItem .fsm {
 	font-size:18px;
 }
-.fbNubFlyout.fbDockChatTabFlyout.fontbig19 .fbChatMessageGroup .fsm {
+.fbNubFlyout.fbDockChatTabFlyout.fontbig19 .fbChatConvItem .fsm {
 	font-size:19px;
 }
-.fbNubFlyout.fbDockChatTabFlyout.fontbig20 .fbChatMessageGroup .fsm {
+.fbNubFlyout.fbDockChatTabFlyout.fontbig20 .fbChatConvItem .fsm {
 	font-size:20px;
 }
 div.pfc_buttons_head {
@@ -346,7 +346,7 @@ img.emote_custom  {
 .pfc_theme_christmas  .fbNubFlyoutTitlebar:hover {
 	background-color:#1e3100;
 }
-.pfc_theme_christmas .fbChatMessageGroup {
+.pfc_theme_christmas .fbChatConvItem {
 	border-top: 1px solid #600005;	
 }
 .pfc_theme_christmas .fbNubFlyoutTitlebar.titlebar::before {
@@ -398,7 +398,7 @@ img.emote_custom  {
 .pfc_theme_vampire  .fbNubFlyoutTitlebar:hover {
 	background-color:#300;
 }
-.pfc_theme_vampire .fbChatMessageGroup {
+.pfc_theme_vampire .fbChatConvItem {
 	border-top: 1px solid #000;	
 }
 .pfc_theme_vampire .fbNubFlyoutTitlebar.titlebar::before {
@@ -453,7 +453,7 @@ img.emote_custom  {
 	background-color:#afafaf;
 	color:#000;
 }
-.pfc_theme_michaeljackson .fbChatMessageGroup {
+.pfc_theme_michaeljackson .fbChatConvItem {
 	border-top: 1px solid #000;	
 }
 .pfc_theme_michaeljackson .fbNubFlyoutTitlebar.titlebar::before {
