@@ -27,9 +27,9 @@ $.fn.DraggableAndResizable = function(selectors, config, animation) {
 	function enableTransition($el) {
 		$el.css({
 			'transition-timing-function'         : 'cubic-bezier'+animation,
+			'transition'                         : 'all 800ms cubic-bezier'+animation,
 			'-webkit-transition-timing-function' : 'cubic-bezier'+animation,
-			'transition'                         : 'all 600ms cubic-bezier'+animation,
-			'-webkit-transition'                 : 'all 600ms cubic-bezier'+animation,
+			'-webkit-transition'                 : 'all 800ms cubic-bezier'+animation,
 		})
 	}
 
@@ -43,7 +43,7 @@ $.fn.DraggableAndResizable = function(selectors, config, animation) {
 	}
 	
 	return this.each(function() {
-		config.pfc_add_rotate = Math.random()<.1? 1 : 0;
+		config.pfc_add_rotate = Math.random()<.5? 1 : 0;
 		
 		var $chatWindow = $(this);
 		if($chatWindow.attr("data-pfc-enabled") == "1")
@@ -149,8 +149,8 @@ $.fn.DraggableAndResizable = function(selectors, config, animation) {
 				height              : config.pfc_size, 
 				'max-width'         : config.pfc_size,
 				'max-height'        : config.pfc_size, 
-				'-webkit-transform' : 'translate3d(-100px,-'+(config.pfc_size-250)+'px,0)'+(config.pfc_add_rotate? cssRotate1 : ''),
-				'box-shadow'        : '0 0 20px #333'
+				'box-shadow'        : config.pfc_size[2]+'px ' +config.pfc_size[1]+'px '+config.pfc_size[0]+'px #333',
+				'-webkit-transform' : 'translate3d(-100px,-'+(config.pfc_size-250)+'px,0)'+(config.pfc_add_rotate? cssRotate1 : '')
 			});
 			currentTranslate = [-100,-config.pfc_size+250,0];
 			setTimeout(function() {

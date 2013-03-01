@@ -16,6 +16,9 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+var o         = new Rain1Overlay("popup"),
+	oStorage  = o.getStorageOverlay();
+
 function changeRounded(e) {
 	localStorage.setItem("pfc_shadow",e.target.value);
 	chrome.tabs.executeScript(null, {code:"changeShadow("+e.target.value+")"});
@@ -43,8 +46,22 @@ function changeTheme(e) {
 }
 
 window.onload = function() {
+	var stored = ['pfc_active',
+	'pfc_add_rotate',
+	'pfc_shadow',
+	'pfc_shadow3d',
+	'pfc_size',
+	'pfc_font',
+	'pfc_fontfamily',
+	'pfc_favorites_smiles',
+	'pfc_font_color',
+	'pfc_theme']         
 	
-
+	oStorage.get(stored, function(config) {
+		init(config);
+	});
+}
+function init(config) {
 	var els = document.getElementsByClassName('gettext');
 	for(var i = 0; i<els.length; i++) {
 		el = els[i];
@@ -52,6 +69,7 @@ window.onload = function() {
 		el.innerHTML = chrome.i18n.getMessage(text)
 	}
 	
+
 	
 	var sha = localStorage.getItem("pfc_shadow");
 	document.getElementById("oshadow").value = sha==null? 5 : sha;
@@ -146,12 +164,13 @@ window.onload = function() {
 		var prevY = e.pageY;
 		var initX = +circleShadow.style.left.replace("px","");
 		var initY = +circleShadow.style.top.replace("px","");
+		var x,y;
 		var _mousemove = function(mme) {
 			console.log("mouse move");
 			var deltaX = mme.pageX-prevX;
 			var deltaY = mme.pageY-prevY;
-			var x = + deltaX + initX;
-			var y = + deltaY + initY;
+			x = + deltaX + initX;
+			y = + deltaY + initY;
 			
 			var raggio = Math.sqrt( Math.pow(20-x,2)+Math.pow(20-y,2) );
 			if(raggio > 20) {
@@ -168,12 +187,17 @@ window.onload = function() {
 			console.log("mouseup");
 			document.removeEventListener('mousemove',_mousemove);
 			document.removeEventListener('mouseup',_mouseup);
+			// store
+			oStorage.set({pfc_shadow3d:[y-20,x-20,6]}, function() {});
 		}
 		document.addEventListener('mousemove',_mousemove);
 		document.addEventListener('mouseup',_mouseup);
 	}
 	circleShadow.addEventListener('mousedown', _mousedownCircle);
-	
+	if(config.pfc_shadow3d) {
+		circleShadow.style.top  = 20+config.pfc_shadow3d[0];
+		circleShadow.style.left = 20+config.pfc_shadow3d[1];
+	}
 
 }
 

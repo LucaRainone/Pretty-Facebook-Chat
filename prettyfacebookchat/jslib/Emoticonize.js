@@ -47,14 +47,16 @@ $.fn.Emoticonize = function(selectors, config) {
 		$emoticonWindow.find('.pfc_emoticons_default').css('display','');
 		
 		$emoticonWindow.on('click','.pfc_emoticon_tab',function(e){
-			console.log(e.target);
+			e.stopPropagation();
 			$emoticonWindow.find('.pfc_emoticon_tab').removeClass("statuson");
 			$(e.target).addClass("statuson");
 
 			$emoticonWindow.find('.pfc_emoticons_group').css('display','none');
 			$emoticonWindow.find('.pfc_emoticons_'+e.target.dataset.tab).css('display','');
 		});
-		$('body').append($emoticonWindow);
+		// prevent waiting window onload
+		
+
 	}else {
 		$emoticonWindow = $('#pfc_emoticon_window');
 	}
@@ -63,7 +65,7 @@ $.fn.Emoticonize = function(selectors, config) {
 		var $chatWindow = $(this),
 		$self   = $chatWindow.find( selectors.chatWindow.selfWindow ),
 		$smile = $('<a href="#" class="button uiSelectorButton pfcopt" data-status="off"></a>');
-		
+
 		$chatWindow.find( selectors.chatWindow.selfMenu ).prepend($smile);
 		$smile.css('opacity',.6);
 		$smile.hover(function(e) {
@@ -78,24 +80,56 @@ $.fn.Emoticonize = function(selectors, config) {
 			e.preventDefault();
 
 			if($smile.attr('data-status') == 'off') {
-				$smile.attr('data-status','on').addClass('statuson');
 				openWindow()
 			}else {
-				$smile.attr('data-status','off').removeClass('statuson');
-				$smile.css('opacity',1).css('background-color','none');
+				closeWindow();
 			}
+		});
+
+		$self.on('click','.pfc_emoticons_group img', function(e) {
+			e.stopPropagation();
+			var $this = $(this);
+			var rtt = $self.find('textarea')[0];
+			console.log($this);
+
+			if($this.attr("data-asciipic")) {
+				rtt.value += EMOTICONS.asciipic[$(this).attr("data-asciipic")];
+			}else {
+				
+				
+				rtt.value += " " +$this.attr("data-title");
+				
+				if(!e.ctrlKey) {
+					closeWindow();
+				}
+			}
+			rtt.focus();
+			rtt.selectionStart = rtt.value.length;
+			return false;
 		});
 		
 		function openWindow() {
-			$smile.css('opacity',1).css('background-color','#fff');
+			$smile.attr('data-status','on').addClass('statuson');
+			$smile.css('opacity',1);
 			$chatWindow.find( selectors.chatWindow.selfHeader).append($emoticonWindow);
-			console.log("chat width " + $chatWindow.width());
 			$emoticonWindow.css({
-				top: 2,
+				top: 0,
 				right:20,
 				display:'block'
 			});
+			var _close = function() {
+				closeWindow();
+				$window.unbind('click',_close);
+			}
+			$window.bind('click', _close);
+		}
+		
+		function closeWindow() {
+			$smile.css('opacity',.6).css('background-color','none');
+			$smile.attr('data-status','off').removeClass('statuson');
+			$emoticonWindow.css('display','none');
 		}
 		
 	});
+	return this;
 }

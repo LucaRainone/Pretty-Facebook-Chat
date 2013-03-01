@@ -454,6 +454,7 @@ if(document.domain == "facebook.com") {
 
 				
 			}
+
 			if(EVENT_SHADOW_CHANGED) {
 				$window.css('-webkit-box-shadow', '0px 0px '+config.pfc_shadow+'px #222');
 				setConfig("pfc_shadow",config.pfc_shadow);

@@ -28,7 +28,28 @@
 				text-align:right;
 				padding-right:10px;
 			}
+			.circular_input {
+				width:50px;
+				height:50px;
+				border-radius: 25px;
+				background-color:#666;
+				color:#fff;
+				font-size: 3px;
+				text-align:center;
+				position:relative;
+			}
+			#circular_pointer {
+				width:10px;
+				height:10px;
+				background-color:#f00;
+				border-radius: 5px;
+				cursor:pointer;
+				position:absolute;
+				top:20px;
+				left:20px;
+			}
 		</style>
+		<script type="text/javascript" src="jslib/Rain1/Overlay.js"></script>
 		<script type="text/javascript" src="popup.js"></script>
 
 	</head>
@@ -37,7 +58,10 @@
 		<form method="get" action="#" id="theForm">
 			<table class="options">
 				<tr>
-					<td><span id="text_shadow" class="gettext"></span></td><td><input id="oshadow" type="range" min="0" max="50" value="10" step="1" style="width:120px" /></td>
+					<td><span id="text_shadow" class="gettext"></span></td><td>
+						<div class="circular_input" id="circular_shadow"><div id="circular_pointer" style="top:20px; left:20px"></div></div>
+						<input id="oshadow" type="hidden" min="0" max="50" value="10" step="1" style="width:120px" />
+					</td>
 				</tr>
 				<tr>
 					<td><span id="text_size" class="gettext"></span></td><td><input id="osize" type="range" min="200" max="600" value="400" step="50" style="width:120px" /></td>

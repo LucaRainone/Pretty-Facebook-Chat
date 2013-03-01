@@ -44,6 +44,7 @@ var $window = $(window),
 		pfc_active           : 1,
 		pfc_add_rotate       : 0,
 		pfc_shadow           : 5,
+		pfc_shadow3d         : [0,0,6],
 		pfc_size             : 400,
 		pfc_font             : 11,
 		pfc_fontfamily       : "",
@@ -52,7 +53,7 @@ var $window = $(window),
 		pfc_theme            : ''
 	},
 	
-	animation = '(0.665, -0.265, 0.240, 1.300)';
+	animation = '(0.680, -0.550, 0.265, 1.550)';
 
 
 
@@ -126,20 +127,85 @@ function changeFontColor(c) {
 		$(this).css("color",c);
 	});
 }
+/**
+ * public change theme
+ * @param theme
+ */
+function changeTheme(theme) {
+	$(selectors.chatWindow.self).Temify(theme);
 
-$(function() {
+	config.pfc_theme = theme;
+}
+
+/**
+ * public 
+ * 
+ */ 
+function changeFont(f) {
+	config.pfc_font = f;
+	$(selectors.chatWindow.selfWindow).each(function() {
+		var $me     = $(this);
+		var classes = $me.attr("class");
+		classes = classes.replace(/fontbig[0-9]*/i,"").replace("  "," ");
+		$me.attr("class",classes);
+		$me.addClass("fontbig"+f);
+	});
+}
+function changeFontFamily(f) {
+	config.pfc_fontfamily = f;
+	$('head').append("<link href='https://fonts.googleapis.com/css?family="+f+"' rel='stylesheet' type='text/css'>");
+	$('#fbDockChat .fbDockChatTabFlyout').each(function() {
+		$(this).css("font-family",f);
+	});
+}
+/**
+* public change shadow
+*/
+function changeShadow(f,top,left) {
+	console.log(f+", " + top +", "+left);
+	$(selectors.chatWindow.selfWindow).css({
+		'box-shadow'        : top+'px ' +left+'px '+f+'px #333'
+	});
+}
+
+// themes
+$.fn.Temify = function(theme) {
+	var className = $(this).find(selectors.chatWindow.selfWindow).attr("class") || "";
+	var classNames = className.split(" ");
+	for(var i = 0; i<classNames.length; i++) {
+		if(classNames[i].substr(0,10) == 'pfc_theme_') {
+			$(selectors.chatWindow.selfWindow).removeClass(classNames[i]);
+			break;
+		}
+	}
+	if(theme != '') {
+		$(this).find(selectors.chatWindow.selfWindow).addClass('pfc_theme_'+theme);
+	}
+}
+
+function init() {
 	// prettify existent windows
-	$(selectors.chatWindow.self).DraggableAndResizable(selectors, config, animation).Emoticonize(selectors,config);
+	$(selectors.chatWindow.self)
+		.DraggableAndResizable(selectors, config, animation)
+		.Emoticonize(selectors,config)
+		.Temify(config.pfc_theme);
 	
 	// listen to DOM modification
 	dom.observeNodes(selectors.chatWindow.container , function(modifications)  {
 		for(var i = 0; i < modifications.length; i++) {
 			if(modifications[i].addedNodes.length > 0) {
-				$(modifications[i].addedNodes).DraggableAndResizable( selectors, config, animation ).Emoticonize(selectors,config);
+				$(modifications[i].addedNodes)
+					.DraggableAndResizable( selectors, config, animation )
+					.Emoticonize(selectors,config)
+					.Temify(config.pfc_theme);
 			}
 		}
 	});
 	pfcAddIcon();
+	changeShadow(config.pfc_shadow3d[2],config.pfc_shadow3d[0],config.pfc_shadow3d[1]);
+};
+$(function() {
+	init();
 });
 
 
