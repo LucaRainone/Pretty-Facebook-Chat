@@ -430,7 +430,9 @@ img.emote_custom  {
 		
 }
 
-
+.fbNubFlyoutBody td {
+	font-family:inherit !important;	
+}
 
 
 /* ***** michaeljackson THEME ******* */
