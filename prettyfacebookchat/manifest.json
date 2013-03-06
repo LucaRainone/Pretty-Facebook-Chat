@@ -6,7 +6,7 @@
   "permissions": [
     "tabs", "http://www.facebook.com/*", "https://www.facebook.com/*"
 ],
-  "version": "1.6.3.4",
+  "version": "1.6.4",
   "icons": { "128": "img/chat_128x128.png", "16":"img/chat_16x16.png" },
   "content_scripts": [
     {
