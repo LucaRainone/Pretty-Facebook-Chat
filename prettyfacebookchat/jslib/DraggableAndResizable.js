@@ -129,7 +129,7 @@ $.fn.DraggableAndResizable = function(selectors, config, animation) {
 				$body.css(
 						{height: h-51, 'max-height':h}
 				);
-				$emoticonPanel  .css({left:w-26})
+				//$emoticonPanel  .css({left:w-26})
 				$conversation   .width(w-20);
 				$input          .css('width',w-20);
 				$chatMessage    .css('max-width',-w-50);
@@ -157,7 +157,7 @@ $.fn.DraggableAndResizable = function(selectors, config, animation) {
 				$body.css(
 						{height: config.pfc_size-51, 'max-height':config.pfc_size}
 				);
-				$emoticonPanel.css({left:config.pfc_size+-26})
+				//$emoticonPanel.css({left:config.pfc_size+-26})
 				$conversation.width(config.pfc_size-20);
 				$input.css('width',config.pfc_size-20);
 				$chatMessage.css('max-width',-config.pfc_size-50);
