@@ -16,10 +16,12 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
+var settings = new Rain1Overlay.Settings("prettyfacebookchat","background");
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab ) {
-		if(changeInfo.status == "complete" && tab.url.indexOf("www.facebook.com") != -1) {
+
+		if(true || changeInfo.status == "complete" && tab.url.indexOf("www.facebook.com") != -1) {
 			chrome.pageAction.show(tabId);
+			console.log(settings.fetchAll(SHARED.defaults));
 			/*
 			if(localStorage['pfc_fontfamily'])
 				chrome.tabs.executeScript(tabId, {code:"setTimeout(function() {changeFontFamily('"+localStorage.getItem('pfc_fontfamily')+"'); },500)"});

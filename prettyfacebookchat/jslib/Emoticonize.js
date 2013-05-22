@@ -39,13 +39,14 @@ $.fn.Emoticonize = function(selectors, config) {
 			}
 			imgs += '<img src="https://graph.facebook.com/'+EMOTICONS.extrasem[i]+'/picture" style="margin:3px; cursor:pointer; width:16px; height:16px" data-title="[['+EMOTICONS.extrasem[i]+']]"/>';
 		}
+
 		imgs +="</div>";
 		
 		
 		$emoticonWindow = $('<div/>').attr("id","pfc_emoticon_window").html(imgs);
 		$emoticonWindow.find('.pfc_emoticons_group').css('display','none');
-		$emoticonWindow.find('.pfc_emoticons_default').css('display','');
-		
+		$emoticonWindow.find('.pfc_emoticons_default').css('display','block');
+
 		$emoticonWindow.on('click','.pfc_emoticon_tab',function(e){
 			e.stopPropagation();
 			$emoticonWindow.find('.pfc_emoticon_tab').removeClass("statuson");

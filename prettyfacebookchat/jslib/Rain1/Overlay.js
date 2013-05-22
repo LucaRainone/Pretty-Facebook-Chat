@@ -1,9 +1,14 @@
 	// http://developer.chrome.com/extensions/tabs.htm
 !function(undefined) {
 	var CTabs = chrome.tabs;
-	
+	var ACONTEXT = "|popup|content|pageaction|background";
+
+	var _chromeruntime = chrome.runtime && chrome.runtime.sendMessage ?
+                         'runtime' : 'extension';
+
+    var idCounter = 0;
 	Rain1Overlay = function (context) {
-		if("|popup|content|pageaction|background".indexOf(context) == -1 ) {
+		if(ACONTEXT.indexOf(context) == -1 ) {
 			_error("context unknown ("+context+")")
 		}
 		this.debug = false;
@@ -62,9 +67,6 @@
 			CTabs.create({url:url},callback);
 		}
 		
-		function _error(a) {
-			console.error(a);
-		}
 		function _log(a) {
 			if ( this.debug )
 				console.log(a);
@@ -99,6 +101,102 @@
 		this.storage.clear(onClear);
 	}
 	
+	Rain1Overlay.Settings = function(namespace, context) {
+		var settingsInstance = this;
+		if(ACONTEXT.indexOf(context) == -1 ) {
+			_error("settings context unknown ("+context+")");
+			return ;
+		}
+		this._context   = context;
+		this._namespace = namespace;
+		this._callbacks = {};
+
+		// in order to listen command from content script
+		if(context == "content") {
+			this._port = chrome[_chromeruntime].connect({name: namespace});
+			//console.error("localstorage in content is not supported");
+
+			
+			//port.postMessage({joke: "Knock knock"});
+			this._port.onMessage.addListener(function(msg) {
+				if (msg.action == "update") {
+					settingsInstance._global[msg.key] = JSON.parse(msg.value);
+				}else if(msg.action == "fetchAll") {
+					settingsInstance._callbacks[msg.callbackname](msg.result);
+					delete settingsInstance._callbacks[msg.callbackname];
+				}else if(msg.action == "get") {
+					settingsInstance._callbacks[msg.callbackname](msg.result);
+					delete settingsInstance._callbacks[msg.callbackname];
+				}else {
+					settingsInstance._callbacks[msg.callbackname](msg.result);
+					delete settingsInstance._callbacks[msg.callbackname];
+				}
+			});
+		}else if(context == "background") {
+			chrome[_chromeruntime].onConnect.addListener(function(port) {
+				settingsInstance._port = port;
+				settingsInstance._port.onMessage.addListener(function(msg) {
+					if(msg.action == "set") {
+						settingsInstance.set(msg.key,msg.value);
+					}else if(msg.action == "get") {
+
+						settingsInstance._port.postMessage({action:'get', result:settingsInstance.get(msg.key), callback:msg.callback});
+					}else if(msg.action == "fetchAll") {
+						settingsInstance._port.postMessage({action:'fetchAll', result:settingsInstance.fetchAll(msg.defaults), callbackname:msg.callbackname});
+					}
+				});
+			});
+		}else {
+			this._port = chrome[_chromeruntime].connect({name: namespace});
+			this._port.onMessage.addListener(function(msg) {
+				if(msg.action == "fetchAll") {
+					settingsInstance._callbacks[msg.callbackname](msg.result);
+					this._global = msg.result;
+					delete settingsInstance._callbacks[msg.callbackname];
+				}
+			});
+		}
+
+		this._global = JSON.parse(localStorage.getItem(namespace) || "{}") || {};
+		return this;
+	}
+	Rain1Overlay.Settings.prototype.get = function(key,callback) {
+		if(this._context == "content") {
+			callbackname = 'get'+(idCounter++);
+			this._callbacks[callbackname] = callback;
+			this._port.postMessage({action:'get', key:key, callbackname:callbackname});
+		}else {
+			if(this._global.hasOwnProperty(key))
+				return this._global[key]
+			else
+				return null;
+		}
+	}
+	Rain1Overlay.Settings.prototype.set = function(key,value) {
+		console.log("set " + key + " = " + value);
+		if(this._context == "content" || this._context == "popup") {
+			this._port.postMessage({action:'set', key:key, value:value});
+			this._global[key] = value;
+		}else {
+			this._global[key] = value;
+			console.log("try to save all localstorage.");
+			localStorage.setItem(this._namespace, JSON.stringify(this._global));
+		}
+	}
+	Rain1Overlay.Settings.prototype.fetchAll = function(defaults, callback) {
+		if(this._context == "content" || this._context == "popup") {
+			callbackname = 'fetchAll'+(idCounter++);
+			this._callbacks[callbackname] = callback;
+			this._port.postMessage({action:'fetchAll', defaults:defaults, callbackname:callbackname});
+		}else {
+			for(var i in defaults) {
+				if(typeof this._global[i] == "undefined") {
+					this._global[i] = defaults[i];
+				}
+			}
+			return this._global;
+		}
+	}
 	
 	Rain1Overlay.DOM = function() {
 		this.observeNodes = function(selector, callback) {
@@ -145,5 +243,8 @@
 		
 	}
 	
+	function _error(a) {
+		console.error(a);
+	}
 	
 }();

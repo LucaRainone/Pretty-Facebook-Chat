@@ -17,51 +17,51 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 var o         = new Rain1Overlay("popup"),
-	oStorage  = o.getStorageOverlay();
+	settings = new Rain1Overlay.Settings("prettyfacebookchat","popup");
 
 function changeRounded(e) {
-	localStorage.setItem("pfc_shadow",e.target.value);
+//	localStorage.setItem("pfc_shadow",e.target.value);
+	settings.set('pfc_shadow',e.target.value);
 	chrome.tabs.executeScript(null, {code:"changeShadow("+e.target.value+")"});
 }
 function changeSize(e) {
-	localStorage.setItem("pfc_size",e.target.value);
+	//localStorage.setItem("pfc_size",e.target.value);
+	settings.set('pfc_size',e.target.value);
 	chrome.tabs.executeScript(null, {code:"config.pfc_size = "+e.target.value+"; EVENT_SIZE_CHANGED = true;"});
 }
 function changeFont(e) {
-	localStorage.setItem("pfc_font",e.target.value);
+	//localStorage.setItem("pfc_font",e.target.value);
+	settings.set('pfc_font',e.target.value);
 	chrome.tabs.executeScript(null, {code:"changeFont("+e.target.value+");"});
 }
 function changeFontColor(color) {
-	localStorage.setItem("pfc_font_color",color);
+	//localStorage.setItem("pfc_font_color",color);
+	settings.set('pfc_font_color',color);
 	chrome.tabs.executeScript(null, {code:"changeFontColor('"+color+"');"});
 	document.getElementById("currentColor").style.backgroundColor = color;
 }
 function changeFontFamily(e) {
-	localStorage.setItem("pfc_fontfamily",e.target.options[e.target.selectedIndex].value);
+	//localStorage.setItem("pfc_fontfamily",e.target.options[e.target.selectedIndex].value);
+	settings.set('pfc_fontfamily',e.target.value);
 	chrome.tabs.executeScript(null, {code:"changeFontFamily('"+e.target.options[e.target.selectedIndex].value+"');"});
 }
 function changeTheme(e) {
-	localStorage.setItem("pfc_theme",e.target.options[e.target.selectedIndex].value);
+	//localStorage.setItem("pfc_theme",e.target.options[e.target.selectedIndex].value);
+	settings.set('pfc_theme',e.target.options[e.target.selectedIndex].value);
 	chrome.tabs.executeScript(null, {code:"changeTheme('"+e.target.options[e.target.selectedIndex].value+"');"});
 }
 
 window.onload = function() {
-	var stored = ['pfc_active',
-	'pfc_add_rotate',
-	'pfc_shadow',
-	'pfc_shadow3d',
-	'pfc_size',
-	'pfc_font',
-	'pfc_fontfamily',
-	'pfc_favorites_smiles',
-	'pfc_font_color',
-	'pfc_theme']         
-	
-	oStorage.get(stored, function(config) {
-		init(config);
+
+	settings.fetchAll(SHARED.defaults, function(config) {
+		init(config)
+		console.log(config);
 	});
+
+
 }
 function init(config) {
+	console.log(config);
 	var els = document.getElementsByClassName('gettext');
 	for(var i = 0; i<els.length; i++) {
 		el = els[i];
@@ -71,16 +71,17 @@ function init(config) {
 	
 
 	
-	var sha = localStorage.getItem("pfc_shadow");
+	var sha = settings.get('pfc_shadow');
 	document.getElementById("oshadow").value = sha==null? 5 : sha;
 
-	var siz = localStorage.getItem("pfc_size");
+	var siz = settings.get('pfc_size');
 	document.getElementById("osize").value = siz==null? 400 : siz;
 	
-	var fsiz = localStorage.getItem("pfc_font");
+	var fsiz = settings.get('pfc_font');
 	document.getElementById("fsize").value = fsiz==null? 11 : fsiz;
 	
-	var ffam = localStorage.getItem("pfc_fontfamily");
+	var ffam = settings.get('pfc_fontfamily');
+	console.log(ffam);
 	var selffindex = 0;
 	for(var i = 0; i<document.getElementById("ffamily").options.length; i++) {
 		if(ffam == document.getElementById("ffamily").options[i].value) {
@@ -89,7 +90,11 @@ function init(config) {
 		}
 	}
 	
-	var color = localStorage.getItem("pfc_font_color");
+	var ftheme = settings.get("pfc_theme");
+
+	document.getElementById("ftheme").value = ftheme;
+
+	var color = settings.get("pfc_font_color");
 	changeFontColor(color);
 	
 	document.getElementById("ffamily").selectedIndex = selffindex;
@@ -97,7 +102,7 @@ function init(config) {
 	
 	
 	
-	var hasshared = localStorage.getItem("hasshared");
+	var hasshared = localStorage.getItem("hasshared")  || settings.get("hasshared");
 	if(hasshared) {
 		document.getElementById('tohide').style.display = 'block';
 	}else {
@@ -180,7 +185,7 @@ function init(config) {
 			}
 			circleShadow.style.top = y+"px";
 			circleShadow.style.left = x+"px";
-			chrome.tabs.executeScript(null, {code:"changeShadow(16,"+(-x+20)*2+","+(-y+20)*2+");"});
+			chrome.tabs.executeScript(null, {code:"changeShadow(16,"+(-y+20)*2+","+(-x+20)*2+");"});
 			
 		}
 		var _mouseup = function() {
@@ -188,7 +193,7 @@ function init(config) {
 			document.removeEventListener('mousemove',_mousemove);
 			document.removeEventListener('mouseup',_mouseup);
 			// store
-			oStorage.set({pfc_shadow3d:[y-20,x-20,6]}, function() {});
+			settings.set('pfc_shadow3d',[y-20,x-20,6]);
 		}
 		document.addEventListener('mousemove',_mousemove);
 		document.addEventListener('mouseup',_mouseup);
@@ -202,6 +207,10 @@ function init(config) {
 }
 
 function sharedok() {
-	localStorage.setItem("hasshared",1);
-	setTimeout(function() { document.getElementById('tohide').style.display = 'block'; document.getElementById('tohide').innerHTML = 'Thank you'; },3000);
+	settings.set("hasshared",1)
+	setTimeout(function() { document.getElementById('tohide').style.display = 'block'; document.getElementById('tohide').innerHTML = 'Thank you :-)'; },3000);
+}
+
+function saveStorage() {
+
 }

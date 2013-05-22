@@ -6,17 +6,17 @@
   "permissions": [
     "tabs", "http://www.facebook.com/*", "https://www.facebook.com/*","storage"
 ],
-  "version": "2.0.0.1",
+  "version": "2.0.0.5",
   "icons": { "128": "img/chat_128x128.png", "16":"img/chat_16x16.png" },
   "content_scripts": [
     {
 	"matches": ["http://www.facebook.com/*","https://www.facebook.com/*"],
-      "js": ["jslib/Rain1/Overlay.js","jslib/jquery-1.9.1.min.js","jslib/DraggableAndResizable.js","emoticons.js","jslib/Emoticonize.js","version2.js"],
+      "js": ["shared.js", "jslib/Rain1/Overlay.js","jslib/jquery-1.9.1.min.js","jslib/DraggableAndResizable.js","emoticons.js","jslib/Emoticonize.js","version2.js"],
 	  "css": ["alter.css"]
     }
   ],
   "background": {	
-  		"scripts":["jslib/Rain1/Overlay.js","background.js"],
+  		"scripts":["shared.js","jslib/Rain1/Overlay.js","background.js"],
   		"persistent":false
   	},
   "page_action": {

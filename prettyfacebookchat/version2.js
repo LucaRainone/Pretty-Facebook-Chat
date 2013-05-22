@@ -18,16 +18,15 @@
 */
 
 var o = new Rain1Overlay('content'),
-	dom = new Rain1Overlay.DOM()
-	;
-
+	dom = new Rain1Overlay.DOM(),
+	settings = new Rain1Overlay.Settings("prettyfacebookchat","content");
 
 var $window = $(window),
 	$document = $(document),
 	selectors = {
 		chatWindow: {
-			container   : '#fbDockChatTabs',
-			self        : '#fbDockChatTabs>div',
+			container   : '#ChatTabsPagelet .fbNubGroup .fbNubGroup',
+			self        : '#ChatTabsPagelet .fbNubGroup .fbNubGroup>div',
 			selfWindow  : '.fbNubFlyout.fbDockChatTabFlyout',
 			selfMenu    : '.mls.rfloat',
 			selfBody    : '.fbNubFlyoutBody.scrollable',
@@ -36,26 +35,26 @@ var $window = $(window),
 			selfOuter   : '.fbNubFlyoutOuter'
 		},
 		extra : {
-			dock : '.fbDockWrapper .fbDock:first'
+			dock : '.fbDockWrapper .fbDock:first .nubContainer:first'
 		}
 	},
-	// init config
-	config = {
-		pfc_active           : 1,
-		pfc_add_rotate       : 0,
-		pfc_shadow           : 5,
-		pfc_shadow3d         : [0,0,6],
-		pfc_size             : 400,
-		pfc_font             : 11,
-		pfc_fontfamily       : "",
-		pfc_favorites_smiles : {},
-		pfc_font_color       : '#333',
-		pfc_theme            : ''
-	},
+	// init config. defaults moved in shared.js
+	config = SHARED.defaults;
 	
 	animation = '(0.680, -0.550, 0.265, 1.550)';
 
+settings.fetchAll(SHARED.defaults, function(all) {
+	console.log(all);
+	console.log(all.pfc_theme);
+	//config = $.extend(SHARED.defaults, all);
+	for(var i in all) {
+		config[i] = all[i];
+	}
 
+	$(function() {
+		init();
+	}); 
+})
 
 
 function addFont(fontName) {
@@ -69,6 +68,8 @@ function pfcAddIcon() {
 	if($( selectors.extra.dock ).length>0) {
 		var title_on = "pretty facebook chat drag ON";
 		var title_off = "pretty facebook chat drag OFF";
+		CAN_DRAG = config.pfc_active;
+
 		if(CAN_DRAG) {
 			var title = title_on;
 		}else {
@@ -78,22 +79,23 @@ function pfcAddIcon() {
 		
 		if(CAN_DRAG) {
 			
-			$(this).find(".pfc_dock i").css({
+			$mypfc.find(".pfc_dock i").css({
 				'background-image':'url("'+chrome.extension.getURL('img/chat_16x16.png')+'")'
 			});
-			$(this).find('.pfc_dock').attr("title",title_on);
+			$mypfc.find('.pfc_dock').attr("title",title_on);
 		}else {
-
-			$(this).find(".pfc_dock i").css({
+			$mypfc.find(".pfc_dock i").css({
 				'background-image':'url("'+chrome.extension.getURL('img/chat_16x16_off.png')+'")'
 			});
-			$(this).find('.pfc_dock').attr("title",title_off);
+			$mypfc.find('.pfc_dock').attr("title",title_off);
 		}
 		
 		$mypfc.click(function() {
 			var $this = $(this);
 			CAN_DRAG = CAN_DRAG==true? false : true;
 			localStorage.setItem("pfc_active",CAN_DRAG);
+			config.pfc_active = CAN_DRAG;
+			settings.set('pfc_active', CAN_DRAG);
 			if(CAN_DRAG) {
 				
 				$this.find(".pfc_dock i").css({
@@ -109,7 +111,7 @@ function pfcAddIcon() {
 				$this.find('.pfc_dock').attr("title",title_off);
 			}
 		});
-		$( selectors.extra.dock ).append($mypfc);
+		$( selectors.extra.dock ).prepend($mypfc);
 	
 	}else {
 		setTimeout(pfcAddIcon,1000);
@@ -154,7 +156,7 @@ function changeFont(f) {
 function changeFontFamily(f) {
 	config.pfc_fontfamily = f;
 	$('head').append("<link href='https://fonts.googleapis.com/css?family="+f+"' rel='stylesheet' type='text/css'>");
-	$('#fbDockChat .fbDockChatTabFlyout').each(function() {
+	$('.fbDockChatTabFlyout').each(function() {
 		$(this).css("font-family",f);
 	});
 }
@@ -163,8 +165,12 @@ function changeFontFamily(f) {
 */
 function changeShadow(f,top,left) {
 	console.log(f+", " + top +", "+left);
+	config.pfc_shadow3d[2] = f;
+	config.pfc_shadow3d[0] = -top;
+	config.pfc_shadow3d[1] = -left;
+
 	$(selectors.chatWindow.selfWindow).css({
-		'box-shadow'        : top+'px ' +left+'px '+f+'px #333'
+		'box-shadow'        : left+'px ' +(top)+'px '+f+'px #333'
 	});
 }
 
@@ -181,6 +187,16 @@ $.fn.Temify = function(theme) {
 	if(theme != '') {
 		$(this).find(selectors.chatWindow.selfWindow).addClass('pfc_theme_'+theme);
 	}
+	return this;
+}
+
+// config
+$.fn.BaseConfig = function() {
+	console.log("beeeh");
+	console.log(config);
+	var $self = $(this).find(selectors.chatWindow.selfWindow);
+	$self.css("font-family",config.pfc_fontfamily);
+	$self.addClass("fontbig"+config.pfc_font);
 }
 
 function init() {
@@ -188,7 +204,8 @@ function init() {
 	$(selectors.chatWindow.self)
 		.DraggableAndResizable(selectors, config, animation)
 		.Emoticonize(selectors,config)
-		.Temify(config.pfc_theme);
+		.Temify(config.pfc_theme)
+		.BaseConfig();
 	
 	// listen to DOM modification
 	dom.observeNodes(selectors.chatWindow.container , function(modifications)  {
@@ -197,16 +214,15 @@ function init() {
 				$(modifications[i].addedNodes)
 					.DraggableAndResizable( selectors, config, animation )
 					.Emoticonize(selectors,config)
-					.Temify(config.pfc_theme);
+					.Temify(config.pfc_theme)
+					.BaseConfig();
 			}
 		}
 	});
 	pfcAddIcon();
 	changeShadow(config.pfc_shadow3d[2],config.pfc_shadow3d[0],config.pfc_shadow3d[1]);
 };
-$(function() {
-	init();
-});
+
 
 
 

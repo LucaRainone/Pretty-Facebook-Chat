@@ -23,7 +23,9 @@ $.fn.DraggableAndResizable = function(selectors, config, animation) {
 		
 	var $window = $(window),
 	$document = $(document);		
-			
+	console.log(config);
+	if(!config.pfc_active)
+		return this;
 	function enableTransition($el) {
 		$el.css({
 			'transition-timing-function'         : 'cubic-bezier'+animation,
@@ -55,8 +57,6 @@ $.fn.DraggableAndResizable = function(selectors, config, animation) {
 		// cache current x,y,z position
 		var currentTranslate = [0,0,0];
 		
-
-		
 		var $self   = $chatWindow.find( selectors.chatWindow.selfWindow ),
 			$body   = $chatWindow.find( selectors.chatWindow.selfBody ),
 			$header = $chatWindow.find( selectors.chatWindow.selfTitlebar),
@@ -72,6 +72,11 @@ $.fn.DraggableAndResizable = function(selectors, config, animation) {
 				{height: $body.height(), 'max-height':$body.height()}
 		);
 		
+		$body.mousedown(function(e) {
+			//alert("stop")
+			e.stopPropagation();
+			//e.preventDefault();
+		});
 		// corner for resize
 		var $corner = $('<div></div>').addClass('pfc_service_resize');
 		$outer.append($corner);
@@ -95,9 +100,7 @@ $.fn.DraggableAndResizable = function(selectors, config, animation) {
 			}
 			
 			if(!xBlocked || (xBlocked && cPosX > lastValidX)) {
-				console.log(xBlocked);
-				console.log(cPosX);
-				console.log(lastValidX);
+
 				$self.css({
 					width               : w,
 					'max-width'         : w,
@@ -149,9 +152,10 @@ $.fn.DraggableAndResizable = function(selectors, config, animation) {
 				height              : config.pfc_size, 
 				'max-width'         : config.pfc_size,
 				'max-height'        : config.pfc_size, 
-				'box-shadow'        : config.pfc_size[2]+'px ' +config.pfc_size[1]+'px '+config.pfc_size[0]+'px #333',
+				'box-shadow'        : -config.pfc_shadow3d[1]+'px ' +(-config.pfc_shadow3d[0]).toString()+'px '+config.pfc_shadow3d[2]+'px #333',
 				'-webkit-transform' : 'translate3d(-100px,-'+(config.pfc_size-250)+'px,0)'+(config.pfc_add_rotate? cssRotate1 : '')
 			});
+			console.log(-config.pfc_shadow3d[0]+'px ' +(-config.pfc_shadow3d[1]).toString()+'px '+config.pfc_shadow3d[2]+'px #333');
 			currentTranslate = [-100,-config.pfc_size+250,0];
 			setTimeout(function() {
 				$body.css(
@@ -265,7 +269,6 @@ $.fn.DraggableAndResizable = function(selectors, config, animation) {
 			_addListeners();
 			
 		});
-		
 		
 		
 	});
