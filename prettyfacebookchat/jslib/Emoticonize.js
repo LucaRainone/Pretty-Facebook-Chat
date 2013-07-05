@@ -40,7 +40,8 @@ $.fn.Emoticonize = function(selectors, config) {
 			imgs += '<img src="https://graph.facebook.com/'+EMOTICONS.extrasem[i]+'/picture" style="margin:3px; cursor:pointer; width:16px; height:16px" data-title="[['+EMOTICONS.extrasem[i]+']]"/>';
 		}
 
-		imgs +="</div>";
+		imgs +="</div><div style=\"margin-top:20px; margin-right:10px; text-align:right;\">Powered by <a href=\"http://www.rain1.it/chrome_extensions/pretty-facebook-chat/?utm_source=pfc&utm_medium=powered\" target=\"_blank\">rain1.it</a></div>";
+		imgs +="<div style=\"margin-top:20px; margin-right:10px; text-align:right;\">Do you know <a href=\"http://www.rain1.it/chrome_extensions/notifycon/?utm_source=pfc&utm_medium=powered&utm_content=notifycon\" target=\"_blank\">Notyficon for pinned tabs</a>?</div>";
 		
 		
 		$emoticonWindow = $('<div/>').attr("id","pfc_emoticon_window").html(imgs);

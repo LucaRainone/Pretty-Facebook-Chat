@@ -19,9 +19,9 @@
 var settings = new Rain1Overlay.Settings("prettyfacebookchat","background");
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab ) {
 
-		if(true || changeInfo.status == "complete" && tab.url.indexOf("www.facebook.com") != -1) {
+		if(changeInfo.status == "complete" && tab.url.indexOf("www.facebook.com") != -1) {
 			chrome.pageAction.show(tabId);
-			console.log(settings.fetchAll(SHARED.defaults));
+			//console.log(settings.fetchAll(SHARED.defaults));
 			/*
 			if(localStorage['pfc_fontfamily'])
 				chrome.tabs.executeScript(tabId, {code:"setTimeout(function() {changeFontFamily('"+localStorage.getItem('pfc_fontfamily')+"'); },500)"});
@@ -44,7 +44,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab ) {
   chrome.pageAction.onClicked.addListener(function(tab) {
     
   });
-console.log($);
+//console.log($);
 chrome.extension.onMessage.addListener(
 		function(request, sender, sendResponse) {
 			if (request.getJQuery == "1")

@@ -12,10 +12,28 @@ div.messages .fbChatConvItem .fsm a {
 	white-space: pre-wrap;
 }
 div.messages {
-	
+	border: 1px solid #666;
+	border-radius: 0 10px 10px 10px;
+	background: rgba(255,255,255,0.7);
 }
+div.messages ._kso {
+	margin:5px;
+}
+
 ._kso {
 	font-family: inherit !important;
+}
+/*
+div.fbNubFlyoutBody {
+	height: inherit !important;
+}
+._50mz div.fbNubFlyoutInner {
+	height: inherit !important;
+
+}
+*/
+div.fbNubFlyoutFooter {
+	width: 100% !important;
 }
 .fbNubFlyoutBody td {
 font-family: inherit;
@@ -315,7 +333,12 @@ img.emote_custom  {
 .pfc_theme_halloween  .fbNubFlyoutTitlebar {
 	border:solid 1px #9E6D09;
 }
-
+.pfc_theme_halloween div.messages {
+	background: rgba(30,30,30,0.7);
+}
+._50dw {
+	border-top:0 !important;
+}
 /* ***** MEME THEME ******* */
 .pfc_theme_meme .fbNubFlyoutBody {
 	background-color:#fff;
@@ -481,8 +504,12 @@ img.emote_custom  {
 		
 }
 
-
-
+.pfc_theme_milan div.messages {
+	background: rgba(30,30,30,0.7);
+}
+._50dw {
+	border-top:0 !important;
+}
 /* ***** CHRISTMATS THEME ******* */
 .pfc_theme_christmas .fbNubFlyoutBody {
 	background-color:#375c28;
@@ -535,7 +562,12 @@ img.emote_custom  {
 		
 }
 
-
+.pfc_theme_christmas div.messages {
+	background: rgba(30,0,0,0.7);
+}
+._50dw {
+	border-top:0 !important;
+}
 /* ***** Vampire THEME ******* */
 .pfc_theme_vampire .fbNubFlyoutBody {
 	background-color:#000;
@@ -588,7 +620,9 @@ img.emote_custom  {
 }
 
 
-
+.pfc_theme_vampire div.messages {
+	background: rgba(30,0,0,0.7);
+}
 
 /* ***** michaeljackson THEME ******* */
 .pfc_theme_michaeljackson .fbNubFlyoutBody {
@@ -637,7 +671,9 @@ img.emote_custom  {
 	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/michaeljackson/mj24x24.png');
 	background-position:0 0;
 }
-
+.pfc_theme_michaeljackson div.messages {
+	background: rgba(255,248,200,0.2);
+}
 /* ***** GANGNAM THEME ******* */
 .pfc_theme_gangnam .fbNubFlyoutBody {
 	background-color:#e1dedb;

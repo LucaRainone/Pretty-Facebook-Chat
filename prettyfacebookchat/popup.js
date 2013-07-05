@@ -114,7 +114,7 @@ function init(config) {
 		document.getElementById('footerlink').innerHTML = '<a style="text-decoration:none; color:#6666ff;" href="https://www.facebook.com/sharer/sharer.php?u=https://chrome.google.com/webstore/detail/ihamlfilbdodiokndlfmmlpjlnopaobi" target="_blank" id="share_ok">'+chrome.i18n.getMessage("share")+' <img src="img/like.png" /></a>';		
 	}else {
 		if(Math.random()<=.5) {
-			document.getElementById('footerlink').innerHTML = '<a style="text-decoration:none; color:#6666ff;" href="https://www.facebook.com/sharer/sharer.php?u=http://www.rain1.it/funny/chrome_extensions/pretty_facebook_chat.html?utm_source=pwindow50" target="_blank">Share <img src="img/like.png" /></a>';
+			document.getElementById('footerlink').innerHTML = '<a style="text-decoration:none; color:#6666ff;" href="https://www.facebook.com/sharer/sharer.php?u=http://www.rain1.it/funny/chrome_extensions/pretty_facebook_chat.html?utm_campaign=fbshare&utm_source=pwindow50" target="_blank">Share <img src="img/like.png" /></a>';
 		}else {
 			document.getElementById('footerlink').innerHTML = '<a style="text-decoration:none; color:#6666ff;" href="https://chrome.google.com/webstore/detail/ihamlfilbdodiokndlfmmlpjlnopaobi/reviews" target="_blank"> Vote me :)</a>';
 		}
