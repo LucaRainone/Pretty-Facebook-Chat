@@ -9,6 +9,7 @@ var SHARED = {
 		pfc_fontfamily       : "",
 		pfc_favorites_smiles : {},
 		pfc_font_color       : '#333',
-		pfc_theme            : ''
+		pfc_theme            : '',
+		pfc_bubble           : 1
 	}
 }

@@ -81,7 +81,7 @@ function init(config) {
 	document.getElementById("fsize").value = fsiz==null? 11 : fsiz;
 	
 	var ffam = settings.get('pfc_fontfamily');
-	console.log(ffam);
+	
 	var selffindex = 0;
 	for(var i = 0; i<document.getElementById("ffamily").options.length; i++) {
 		if(ffam == document.getElementById("ffamily").options[i].value) {
@@ -90,6 +90,19 @@ function init(config) {
 		}
 	}
 	
+	var bubbleText = settings.get('pfc_bubble');
+	document.getElementById("pfc_bubble").checked = bubbleText == 1;
+
+	document.getElementById("pfc_bubble").onchange = function() {
+		if(document.getElementById("pfc_bubble").checked) {
+			settings.set('pfc_bubble',1)
+		}else {
+			settings.set('pfc_bubble',0)
+		}
+		var hasChecked = document.getElementById("pfc_bubble").checked? 1 : 0;
+		chrome.tabs.executeScript(null, {code:"changeBubbleSetting("+hasChecked+");"});
+	}
+
 	var ftheme = settings.get("pfc_theme");
 
 	document.getElementById("ftheme").value = ftheme;
@@ -164,7 +177,7 @@ function init(config) {
 	var circleShadow = document.querySelector('#circular_pointer');
 	var _mousedownCircle = function(e) {
 		e.preventDefault();
-		console.log(e);
+
 		var prevX = e.pageX;
 		var prevY = e.pageY;
 		var initX = +circleShadow.style.left.replace("px","");

@@ -174,6 +174,18 @@ function changeShadow(f,top,left) {
 	});
 }
 
+function changeBubbleSetting(isSet) {
+	config.pfc_bubble = isSet;
+	$(selectors.chatWindow.selfWindow).each(function() {
+		$(this).removeClass('pfc_option_bubble');
+	});
+	if(config.pfc_bubble) {
+		$(selectors.chatWindow.selfWindow).each(function() {
+			$(this).addClass('pfc_option_bubble');
+		});
+	}
+}
+
 // themes
 $.fn.Temify = function(theme) {
 	var className = $(this).find(selectors.chatWindow.selfWindow).attr("class") || "";
@@ -187,13 +199,15 @@ $.fn.Temify = function(theme) {
 	if(theme != '') {
 		$(this).find(selectors.chatWindow.selfWindow).addClass('pfc_theme_'+theme);
 	}
+	if(config.pfc_bubble) {
+		$(this).find(selectors.chatWindow.selfWindow).addClass('pfc_option_bubble');
+	}
 	return this;
 }
 
 // config
 $.fn.BaseConfig = function() {
-	console.log("beeeh");
-	console.log(config);
+
 	var $self = $(this).find(selectors.chatWindow.selfWindow);
 	$self.css("font-family",config.pfc_fontfamily);
 	$self.addClass("fontbig"+config.pfc_font);

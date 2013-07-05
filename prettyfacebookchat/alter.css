@@ -11,7 +11,7 @@ div.messages .fbChatConvItem .fsm a {
 	word-wrap: break-word !important;
 	white-space: pre-wrap;
 }
-div.messages {
+.pfc_option_bubble div.messages {
 	border: 1px solid #666;
 	border-radius: 0 10px 10px 10px;
 	background: rgba(255,255,255,0.7);
@@ -333,7 +333,7 @@ img.emote_custom  {
 .pfc_theme_halloween  .fbNubFlyoutTitlebar {
 	border:solid 1px #9E6D09;
 }
-.pfc_theme_halloween div.messages {
+.pfc_theme_halloween.pfc_option_bubble div.messages {
 	background: rgba(30,30,30,0.7);
 }
 ._50dw {
@@ -504,7 +504,7 @@ img.emote_custom  {
 		
 }
 
-.pfc_theme_milan div.messages {
+.pfc_theme_milan.pfc_option_bubble  div.messages {
 	background: rgba(30,30,30,0.7);
 }
 ._50dw {
@@ -562,7 +562,7 @@ img.emote_custom  {
 		
 }
 
-.pfc_theme_christmas div.messages {
+.pfc_theme_christmas.pfc_option_bubble  div.messages {
 	background: rgba(30,0,0,0.7);
 }
 ._50dw {
@@ -620,7 +620,7 @@ img.emote_custom  {
 }
 
 
-.pfc_theme_vampire div.messages {
+.pfc_theme_vampire.pfc_option_bubble  div.messages {
 	background: rgba(30,0,0,0.7);
 }
 
@@ -671,7 +671,7 @@ img.emote_custom  {
 	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/michaeljackson/mj24x24.png');
 	background-position:0 0;
 }
-.pfc_theme_michaeljackson div.messages {
+.pfc_theme_michaeljackson.pfc_option_bubble  div.messages {
 	background: rgba(255,248,200,0.2);
 }
 /* ***** GANGNAM THEME ******* */
