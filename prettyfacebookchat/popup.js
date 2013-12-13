@@ -38,7 +38,7 @@ function changeFontColor(color) {
 	//localStorage.setItem("pfc_font_color",color);
 	settings.set('pfc_font_color',color);
 	chrome.tabs.executeScript(null, {code:"changeFontColor('"+color+"');"});
-	document.getElementById("currentColor").style.backgroundColor = color;
+	//document.getElementById("currentColor").style.backgroundColor = color;
 }
 function changeFontFamily(e) {
 	//localStorage.setItem("pfc_fontfamily",e.target.options[e.target.selectedIndex].value);
@@ -90,19 +90,6 @@ function init(config) {
 		}
 	}
 	
-	var bubbleText = settings.get('pfc_bubble');
-	document.getElementById("pfc_bubble").checked = bubbleText == 1;
-
-	document.getElementById("pfc_bubble").onchange = function() {
-		if(document.getElementById("pfc_bubble").checked) {
-			settings.set('pfc_bubble',1)
-		}else {
-			settings.set('pfc_bubble',0)
-		}
-		var hasChecked = document.getElementById("pfc_bubble").checked? 1 : 0;
-		chrome.tabs.executeScript(null, {code:"changeBubbleSetting("+hasChecked+");"});
-	}
-
 	var ftheme = settings.get("pfc_theme");
 
 	document.getElementById("ftheme").value = ftheme;
@@ -141,20 +128,24 @@ function init(config) {
 	document.getElementById('ftheme').onchange = changeTheme;
 	
 	var theForm = document.getElementById("theForm");
-
+/*
 	var colorpicker = document.getElementById('colorpicker');
+
 	colorpicker.style.width = 120;
 	colorpicker.style.height = 60;
 	var html = "";
-	for(var r =0; r<16; r+=5) {
-		for(var g=0; g<16; g+=5) {
-			for(var b=0; b<16; b+=5) {
+	for(var r =0; r<16; r+=3) {
+		for(var g=0; g<16; g+=3) {
+			for(var b=0; b<16; b+=3) {
 				html+='<div data-color="#'+r.toString(16)+""+g.toString(16)+""+b.toString(16)+'" style="cursor:crosshair; float:left; width:10px; height:10px; background-color:#'+r.toString(16)+""+g.toString(16)+""+b.toString(16)+'"></div>';
 			}
 		}
 	}
-	colorpicker.innerHTML = html;
-	
+	*/
+	colorpicker.innerHTML = '<input type="color" name="color" id="color" value="'+color+'"/>';
+
+	document.getElementById("color").addEventListener('change',function() {changeFontColor(this.value);});
+	/*
 	var divs = colorpicker.getElementsByTagName('DIV');
 	var MOUSEDOWN = false;
 	for(var i = 0; i<divs.length; i++) {
@@ -169,8 +160,7 @@ function init(config) {
 		}
 	}
 	document.onmouseup = function() {MOUSEDOWN = false;}
-	
-	
+	*/
 	
 	// SHADOW
 	

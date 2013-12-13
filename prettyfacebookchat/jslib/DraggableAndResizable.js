@@ -23,7 +23,6 @@ $.fn.DraggableAndResizable = function(selectors, config, animation) {
 		
 	var $window = $(window),
 	$document = $(document);		
-	console.log(config);
 	if(!config.pfc_active)
 		return this;
 	function enableTransition($el) {

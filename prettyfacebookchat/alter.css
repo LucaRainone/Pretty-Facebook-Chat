@@ -18,10 +18,12 @@ div.messages .fbChatConvItem .fsm a {
 }
 div.messages ._kso {
 	margin:5px;
+	color: inherit !important;
 }
 
 ._kso {
 	font-family: inherit !important;
+	max-width: 80% !important;
 }
 /*
 div.fbNubFlyoutBody {
@@ -299,46 +301,6 @@ img.emote_custom  {
 .pfc.fbNub.focusedTab {
 	z-index:99 !important;	
 }
-/* ***** HALLOWEEN THEME ******* */
-.pfc_theme_halloween .fbNubFlyoutBody {
-	background-color:#333;
-	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/halloween/background-halloween.jpg');
-	color:#FA0;
-	font-family: Butcherman,Eater;
-}
-.pfc_theme_halloween textarea,.pfc_theme_halloween .inputContainer, .pfc_theme_halloween .fbNubFlyoutFooter {
-	background-color:#000 !important;
-	color:#fff;
-}
-.pfc_theme_halloween  .fbNubFlyoutTitlebar, .fbNub.focusedTab .pfc_theme_halloween .titlebar{
-	background-color:#9E6D09;
-	font-family: Butcherman,Eater;
-}
-.pfc_theme_halloween  .fbNubFlyoutTitlebar:hover {
-	background-color:#D6AA22;	
-}
-.pfc_theme_halloween .fbNubFlyoutTitlebar.titlebar::before {
-	display:block;
-	content:"";
-	position:absolute;
-	width:48px;
-	height:48px;
-	z-index:1;
-	top:-38px;
-	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/halloween/Jack-O-Lantern-icon.png')	
-}
-.fbNub .pfc_theme_halloween .titlebar .button.uiSelectorButton.pfcopt {
-	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/halloween/Jack-O-Lantern-icon16x16.png');
-}
-.pfc_theme_halloween  .fbNubFlyoutTitlebar {
-	border:solid 1px #9E6D09;
-}
-.pfc_theme_halloween.pfc_option_bubble div.messages {
-	background: rgba(30,30,30,0.7);
-}
-._50dw {
-	border-top:0 !important;
-}
 /* ***** MEME THEME ******* */
 .pfc_theme_meme .fbNubFlyoutBody {
 	background-color:#fff;
@@ -512,26 +474,19 @@ img.emote_custom  {
 }
 /* ***** CHRISTMATS THEME ******* */
 .pfc_theme_christmas .fbNubFlyoutBody {
-	background-color:#375c28;
 	background-repeat: no-repeat;
 	background-position: bottom right;
-	color:#fafafa;
-	text-shadow:1px 1px 0px #000;
-	background:url('chrome-extension://__MSG_@@extension_id__/themes/christmas/bg.png') bottom right no-repeat,-webkit-linear-gradient(top, #79040a 0%,#a50008 250px);
+	background:url('chrome-extension://__MSG_@@extension_id__/themes/christmas/bg.png') bottom right no-repeat;
 }
 .pfc_theme_christmas textarea,.pfc_theme_christmas .inputContainer, .pfc_theme_christmas .fbNubFlyoutFooter {
-	background-color:#600005 !important;
-	color:#fff;
+
 }
 .pfc_theme_christmas  .fbNubFlyoutTitlebar, .fbNub.focusedTab .pfc_theme_christmas .titlebar{
-	background-color:#1e3100;
+	background-color:#660000;
 	font-family: Cardo;
 }
 .pfc_theme_christmas  .fbNubFlyoutTitlebar:hover {
-	background-color:#1e3100;
-}
-.pfc_theme_christmas .fbChatConvItem {
-	border-top: 1px solid #600005;	
+	background-color:#900000;
 }
 .pfc_theme_christmas .fbNubFlyoutTitlebar.titlebar::before {
 	display:block;
@@ -550,102 +505,32 @@ img.emote_custom  {
 .pfc_theme_christmas div.fbChatConvDateBreak {
 	color:#ffffff;	
 }
-.pfc_theme_christmas .fbNubFlyoutBody a,.pfc_theme_christmas .fbNubFlyoutBody .filename {
-	color: #90f892;	
-}
+
 .pfc_theme_christmas  .fbNubFlyoutTitlebar {
 
 }
-.fbNub .pfc_theme_christmas .emoticonsPanel a.emoteTogglerImg,.fbNub .pfc_theme_christmas .emoticonsPanel .emoteTogglerImg:hover {
+.fbNub .pfc_theme_christmas .emoticonsPanel .emoteTogglerImg,.fbNub .pfc_theme_christmas .emoticonsPanel .emoteTogglerImg:hover {
 		background-image:url('chrome-extension://__MSG_@@extension_id__/themes/christmas/christmas24x24.png');
 		background-position:0 0;
 		
 }
-
-.pfc_theme_christmas.pfc_option_bubble  div.messages {
-	background: rgba(30,0,0,0.7);
-}
 ._50dw {
 	border-top:0 !important;
 }
-/* ***** Vampire THEME ******* */
-.pfc_theme_vampire .fbNubFlyoutBody {
-	background-color:#000;
-	background-repeat: no-repeat;
-	background-position: bottom right;
-	color:#fafafa;
-	background:url('chrome-extension://__MSG_@@extension_id__/themes/vampire/bg.png') bottom right no-repeat,-webkit-linear-gradient(left, #1c0606 0%,#160505 200px);
-}
-.pfc_theme_vampire textarea,.pfc_theme_vampire .inputContainer, .pfc_theme_vampire .fbNubFlyoutFooter {
-	background-color:#300 !important;
-	color:#fff;
-}
-.pfc_theme_vampire  .fbNubFlyoutTitlebar, .fbNub.focusedTab .pfc_theme_vampire .titlebar{
-	background-color:#200;
-	font-family: Cardo;
-}
-.pfc_theme_vampire  .fbNubFlyoutTitlebar:hover {
-	background-color:#300;
-}
-.pfc_theme_vampire .fbChatConvItem {
-	border-top: 1px solid #000;	
-}
-.pfc_theme_vampire .fbNubFlyoutTitlebar.titlebar::before {
-	display:block;
-	content:"";
-	position:absolute;
-	width:150px;
-	height:157px;
-	z-index:1;
-	top:0px;
-	left:0px;
-	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/vampire/vampiretop.png');
-}
-.fbNub .pfc_theme_vampire .titlebar .button.uiSelectorButton.pfcopt {
-	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/vampire/vampire16x16.png');
-}
-.pfc_theme_vampire div.fbChatConvDateBreak {
-	color:#ffffff;	
-}
-.pfc_theme_vampire .fbNubFlyoutBody a,.pfc_theme_vampire .fbNubFlyoutBody .filename {
-	color: #90f892;	
-}
-.pfc_theme_vampire  .fbNubFlyoutTitlebar {
 
-}
-.fbNub .pfc_theme_vampire .emoticonsPanel a.emoteTogglerImg,.fbNub .pfc_theme_vampire .emoticonsPanel .emoteTogglerImg:hover {
-		background-image:url('chrome-extension://__MSG_@@extension_id__/themes/vampire/vampire24x24.png');
-		background-position:0 0;
-		
-}
-
-
-.pfc_theme_vampire.pfc_option_bubble  div.messages {
-	background: rgba(30,0,0,0.7);
-}
 
 /* ***** michaeljackson THEME ******* */
 .pfc_theme_michaeljackson .fbNubFlyoutBody {
-	background-color:#000;
 	background-repeat: no-repeat;
 	background-position: bottom right;
-	color:#fafafa;
 	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/michaeljackson/bg.png');
-}
-.pfc_theme_michaeljackson textarea,.pfc_theme_michaeljackson .inputContainer, .pfc_theme_michaeljackson .fbNubFlyoutFooter {
-	background-color:#222 !important;
-	color:#fff;
 }
 .pfc_theme_michaeljackson  .fbNubFlyoutTitlebar, .fbNub.focusedTab .pfc_theme_michaeljackson .titlebar{
 	background-color:#6f5029;
 	font-family: Cardo;
 }
 .pfc_theme_michaeljackson  .fbNubFlyoutTitlebar:hover {
-	background-color:#afafaf;
-	color:#000;
-}
-.pfc_theme_michaeljackson .fbChatConvItem {
-	border-top: 1px solid #000;	
+	background-color:#4f3009;
 }
 .pfc_theme_michaeljackson .fbNubFlyoutTitlebar.titlebar::before {
 	display:block;
@@ -664,9 +549,7 @@ img.emote_custom  {
 .pfc_theme_michaeljackson div.fbChatConvDateBreak {
 	color:#ffffff;	
 }
-.pfc_theme_michaeljackson .fbNubFlyoutBody a,.pfc_theme_michaeljackson .fbNubFlyoutBody .filename {
-	color: #90f892;	
-}
+
 .fbNub .pfc_theme_michaeljackson .emoticonsPanel a.emoteTogglerImg,.fbNub .pfc_theme_michaeljackson .emoticonsPanel .emoteTogglerImg:hover {
 	background-image:url('chrome-extension://__MSG_@@extension_id__/themes/michaeljackson/mj24x24.png');
 	background-position:0 0;
