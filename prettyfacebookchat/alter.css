@@ -4,10 +4,10 @@
 	background-repeat:no-repeat;
 	background-position: top left;
 }
-.fbDockChatTab .conversationContainer .fbChatConvItem .fsm {
+.fbDockChatTab .conversationContainer .fbChatConvItem span {
 	max-width:inherit !important;
 }
-div.messages .fbChatConvItem .fsm a {
+div.messages .fbChatConvItem span a {
 	word-wrap: break-word !important;
 	white-space: pre-wrap;
 }
@@ -50,38 +50,38 @@ font-family: inherit;
 .typingIndicator {
 	width:200px;
 }
-.fbNubFlyout.fbDockChatTabFlyout.fontbig10 .fsm {
-	font-size:10px;
+.fbNubFlyoutBody.fontbig10 span {
+	font-size:10px !important;
 }
-.fbNubFlyout.fbDockChatTabFlyout.fontbig11 .fsm {
-	font-size:11px;
+.fbNubFlyoutBody.fontbig11 span {
+	font-size:11px !important;
 }
-.fbNubFlyout.fbDockChatTabFlyout.fontbig12 .fsm {
-	font-size:12px;
+.fbNubFlyoutBody.fontbig12 span {
+	font-size:12px !important;
 }
-.fbNubFlyout.fbDockChatTabFlyout.fontbig13 .fsm {
-	font-size:13px;
+.fbNubFlyoutBody.fontbig13 span {
+	font-size:13px !important;
 }
-.fbNubFlyout.fbDockChatTabFlyout.fontbig14 .fsm {
-	font-size:14px;
+.fbNubFlyoutBody.fontbig14 span {
+	font-size:14px !important;
 }
-.fbNubFlyout.fbDockChatTabFlyout.fontbig15 .fsm {
-	font-size:15px;
+.fbNubFlyoutBody.fontbig15 span {
+	font-size:15px !important;
 }
-.fbNubFlyout.fbDockChatTabFlyout.fontbig16 .fsm{
-	font-size:16px;
+.fbNubFlyoutBody.fontbig16 span{
+	font-size:16px !important;
 }
-.fbNubFlyout.fbDockChatTabFlyout.fontbig17 .fsm {
-	font-size:17px;
+.fbNubFlyoutBody.fontbig17 span {
+	font-size:17px !important;
 }
-.fbNubFlyout.fbDockChatTabFlyout.fontbig18 .fsm {
-	font-size:18px;
+.fbNubFlyoutBody.fontbig18 span {
+	font-size:18px !important;
 }
-.fbNubFlyout.fbDockChatTabFlyout.fontbig19 .fsm {
-	font-size:19px;
+.fbNubFlyoutBody.fontbig19 span {
+	font-size:19px !important;
 }
-.fbNubFlyout.fbDockChatTabFlyout.fontbig20 .fsm {
-	font-size:20px;
+.fbNubFlyoutBody.fontbig20 span {
+	font-size:20px !important;
 }
 div.pfc_buttons_head {
 	padding:3px; 

@@ -1,5 +1,5 @@
 /*
-    Pretty Facebook Chat
+    Pretty FaceLook Chat
     Chrome Extensions for improve facebook chat
     Copyright (C) 2013  Luca Rainone <luca.rainone@gmail.com>
 

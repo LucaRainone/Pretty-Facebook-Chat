@@ -6,12 +6,12 @@
   "permissions": [
     "tabs", "http://www.facebook.com/*", "https://www.facebook.com/*","storage"
 ],
-  "version": "2.1",
+  "version": "2.2",
   "icons": { "128": "img/chat_128x128.png", "16":"img/chat_16x16.png" },
   "content_scripts": [
     {
 	"matches": ["http://www.facebook.com/*","https://www.facebook.com/*"],
-      "js": ["shared.js", "jslib/Rain1/Overlay.js","jslib/jquery-1.9.1.min.js","jslib/DraggableAndResizable.js","emoticons.js","jslib/Emoticonize.js","version2.js"],
+      "js": ["shared.js", "jslib/Rain1/Overlay.js","jslib/jquery-1.9.1.min.js","jslib/DraggableAndResizable.js","version2.js"],
 	  "css": ["alter.css"]
     }
   ],
@@ -88,35 +88,6 @@
     "img/chat_16x16.png",
     "img/chat_16x16_off.png",
     "img/hat.png",
-    "img/like.png",
-    "emoticons/3.png",
-    "emoticons/42.png",
-    "emoticons/88.png",
-    "emoticons/a.png",
-    "emoticons/ammicc.png",
-    "emoticons/boh.png",
-    "emoticons/chucknorris.jpg",
-    "emoticons/cuore.png",
-    "emoticons/DD.png",
-    "emoticons/devil.png",
-    "emoticons/gnep.png",
-    "emoticons/human.png",
-    "emoticons/kiss.png",
-    "emoticons/mmmm.png",
-    "emoticons/nu.png",
-    "emoticons/oo.png",
-    "emoticons/ooooo.png",
-    "emoticons/pacman.png",
-    "emoticons/penguin.png",
-    "emoticons/pp.png",
-    "emoticons/robot.png",
-    "emoticons/sigh.png",
-    "emoticons/smile.png",
-    "emoticons/sole.png",
-    "emoticons/thumb.png",
-    "emoticons/uao.png",
-    "emoticons/uffiiii.png",
-    "emoticons/meme.png",
-    "emoticons/smileys.png"
+    "img/like.png"
   ]
 }

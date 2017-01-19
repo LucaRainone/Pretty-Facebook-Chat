@@ -1,5 +1,5 @@
 /*
-    Pretty Facebook Chat
+    Pretty FaceLook Chat
     Chrome Extensions for improve facebook chat
     Copyright (C) 2013  Luca Rainone <luca.rainone@gmail.com>
 
@@ -19,7 +19,7 @@
 
 var o = new Rain1Overlay('content'),
 	dom = new Rain1Overlay.DOM(),
-	settings = new Rain1Overlay.Settings("prettyfacebookchat","content");
+	settings = new Rain1Overlay.Settings("prettyfacelookchat","content");
 
 var $window = $(window),
 	$document = $(document),
@@ -66,8 +66,8 @@ function addFont(fontName) {
 CAN_DRAG = true;
 function pfcAddIcon() {
 	if($( selectors.extra.dock ).length>0) {
-		var title_on = "pretty facebook chat drag ON";
-		var title_off = "pretty facebook chat drag OFF";
+		var title_on = "Pretty FaceLook Chat drag ON";
+		var title_off = "Pretty FaceLook Chat drag OFF";
 		CAN_DRAG = config.pfc_active;
 
 		if(CAN_DRAG) {
@@ -130,7 +130,7 @@ function changeFontColor(c) {
 function updateFontColor(c,win) {
 	var $els = win || $( selectors.chatWindow.self );
 	$els.each(function() {
-		$(this).css("color",c);
+		$(this).find("span").css("color",c);
 	});
 }
 /**
@@ -149,7 +149,7 @@ function changeTheme(theme) {
  */ 
 function changeFont(f) {
 	config.pfc_font = f;
-	$(selectors.chatWindow.selfWindow).each(function() {
+	$(selectors.chatWindow.selfBody).each(function() {
 		var $me     = $(this);
 		var classes = $me.attr("class");
 		classes = classes.replace(/fontbig[0-9]*/i,"").replace("  "," ");
@@ -168,7 +168,6 @@ function changeFontFamily(f) {
 * public change shadow
 */
 function changeShadow(f,top,left) {
-	console.log(f+", " + top +", "+left);
 	config.pfc_shadow3d[2] = f;
 	config.pfc_shadow3d[0] = -top;
 	config.pfc_shadow3d[1] = -left;

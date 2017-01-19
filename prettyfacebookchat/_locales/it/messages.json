@@ -1,6 +1,6 @@
 {
 	"appName": {
-		"message": "Pretty Facebook Chat"
+		"message": "Pretty FaceLook Chat"
 	},
 	"appDesc": {
 		"message": "Migliora la tua chat in facebook. Più grande, più animata, più... cool :-)"
@@ -18,7 +18,7 @@
 		"message": "Diventa Fan"
 	},
 	"click_for_install" :{
-		"message":"Clicca qui per installare Pretty Facebook Chat---&gt; https://chrome.google.com/webstore/detail/ihamlfilbdodiokndlfmmlpjlnopaobi"
+		"message":"Clicca qui per installare Pretty FaceLook Chat---&gt; https://chrome.google.com/webstore/detail/ihamlfilbdodiokndlfmmlpjlnopaobi"
 	},
 	"suggestme" :{
 		"message":"Consigliami ;)"
@@ -39,7 +39,7 @@
 		"message":"Vuoi inserire questa icona tra le tue preferite?"
 	},
 	"send_stats_advise": {
-		"message":"Puoi inviarmi la tua configurazione di pretty facebook chat. In questo modo potrò vedere le configurazioni più diffuse e migliorare l'applicazione. E' un modo per aiutarmi. Vuoi farlo? :)"
+		"message":"Puoi inviarmi la tua configurazione di Pretty FaceLook Chat. In questo modo potrò vedere le configurazioni più diffuse e migliorare l'applicazione. E' un modo per aiutarmi. Vuoi farlo? :)"
 	},
 	"send_stats": {
 		"message":"stats"

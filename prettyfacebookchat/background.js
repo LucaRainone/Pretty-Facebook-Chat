@@ -1,5 +1,5 @@
 /*   
-	Pretty Facebook Chat
+	Pretty FaceLook Chat
     Chrome Extension for improve facebook chat
     Copyright (C) 2012  Luca Rainone <luca.rainone@gmail.com>
 
@@ -16,7 +16,7 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-var settings = new Rain1Overlay.Settings("prettyfacebookchat","background");
+var settings = new Rain1Overlay.Settings("prettyfacelookchat","background");
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab ) {
 
 		if(changeInfo.status == "complete" && tab.url.indexOf("www.facebook.com") != -1) {

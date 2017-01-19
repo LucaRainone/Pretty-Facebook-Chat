@@ -1,6 +1,6 @@
 {
   "appName": {
-    "message": "Pretty Facebook Chat",
+    "message": "Pretty FaceLook Chat",
     "description": "The title of the application, displayed in the web store."
   },
   "appDesc": {
@@ -20,7 +20,7 @@
 		"message":"Become a Fan"
 	},
 	"click_for_install" :{
-		"message":"Click here to get Pretty Facebook Chat---&gt; https://chrome.google.com/webstore/detail/ihamlfilbdodiokndlfmmlpjlnopaobi"
+		"message":"Click here to get Pretty FaceLook Chat---&gt; https://chrome.google.com/webstore/detail/ihamlfilbdodiokndlfmmlpjlnopaobi"
 	},
 	"suggestme" :{
 		"message":"Recommend me"
@@ -41,7 +41,7 @@
 		"message":"Do you want to insert this emote in your favorites?"
 	},
 	"send_stats_advise": {
-		"message":"You can send me your Pretty Facebook Chat configuration. That's only for developing purposes (so I can see the most used configurations). Do you want help me? :)"
+		"message":"You can send me your Pretty FaceLook Chat configuration. That's only for developing purposes (so I can see the most used configurations). Do you want help me? :)"
 	},
 	"send_stats": {
 		"message":"stats"

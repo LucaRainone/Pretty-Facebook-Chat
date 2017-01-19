@@ -1,5 +1,5 @@
 /*
-    Pretty Facebook Chat
+    Pretty FaceLook Chat
     Chrome Extension for improve facebook chat
     Copyright (C) 2012  Luca Rainone <luca.rainone@gmail.com>
 
@@ -17,7 +17,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 var o         = new Rain1Overlay("popup"),
-	settings = new Rain1Overlay.Settings("prettyfacebookchat","popup");
+	settings = new Rain1Overlay.Settings("prettyfacelookchat","popup");
 
 function changeRounded(e) {
 //	localStorage.setItem("pfc_shadow",e.target.value);
