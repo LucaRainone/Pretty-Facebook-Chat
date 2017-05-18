@@ -29,7 +29,7 @@ var $window = $(window),
 			self        : '#ChatTabsPagelet .fbNubGroup .fbNubGroup>div',
 			selfWindow  : '.fbNubFlyout.fbDockChatTabFlyout',
 			selfMenu    : '.mls.rfloat',
-			selfBody    : '.fbNubFlyoutBody.scrollable',
+			selfBody    : '.fbNubFlyoutBody',
 			selfTitlebar: '.fbNubFlyoutTitlebar',
 			selfHeader  : '.fbNubFlyoutHeader',
 			selfOuter   : '.fbNubFlyoutOuter'
@@ -205,26 +205,41 @@ $.fn.BaseConfig = function() {
 	updateFontColor(config.pfc_font_color,$(this));
 }
 
+// themes
+$.fn.ADS = function(theme) {
+    $(this).find('.conversation').append("<a href='https://freebitco.in/?r=484537' target='_blank'>Earn Bitcoin now</a>");
+    return this;
+}
+
 function init() {
 	// prettify existent windows
 	$(selectors.chatWindow.self)
 		.DraggableAndResizable(selectors, config, animation)
-		.Emoticonize(selectors,config)
 		.Temify(config.pfc_theme)
+		.ADS()
 		.BaseConfig();
 	
 	// listen to DOM modification
-	dom.observeNodes(selectors.chatWindow.container , function(modifications)  {
-		for(var i = 0; i < modifications.length; i++) {
-			if(modifications[i].addedNodes.length > 0) {
-				$(modifications[i].addedNodes)
-					.DraggableAndResizable( selectors, config, animation )
-					.Emoticonize(selectors,config)
-					.Temify(config.pfc_theme)
-					.BaseConfig();
-			}
-		}
-	});
+	setInterval(function() {
+        var els = document.querySelectorAll('.fbNub.opened:not(.pfc)');
+        for(var i = 0; i < els.length; i++) {
+            $(els[i]).addClass("pfc").DraggableAndResizable( selectors, config, animation )
+            .Temify(config.pfc_theme)
+            .ADS()
+            .BaseConfig();
+        }
+	},1000);
+
+	// dom.observeNodes(selectors.chatWindow.container , function(modifications)  {
+	// 	for(var i = 0; i < modifications.length; i++) {
+	// 		if(modifications[i].addedNodes.length > 0) {
+	// 			$(modifications[i].addedNodes)
+	// 				.DraggableAndResizable( selectors, config, animation )
+	// 				.Temify(config.pfc_theme)
+	// 				.BaseConfig();
+	// 		}
+	// 	}
+	// });
 	pfcAddIcon();
 	changeShadow(config.pfc_shadow3d[2],config.pfc_shadow3d[0],config.pfc_shadow3d[1]);
 };
